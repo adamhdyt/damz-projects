@@ -4,7 +4,7 @@
 
 **Blocked by:** 02 — Setup MDX content engine
 
-**Status:** ready-for-agent
+**Status:** ❌ Rollbacked (User prefers original design)
 
 - [ ] `PostCard` component supports a visual variant: when the post has a `cover` image AND `category === "life"`, it renders with the image prominently displayed (large aspect ratio, image fills the top of the card)
 - [ ] Life cards without a `cover` image fall back to the standard text-only card layout

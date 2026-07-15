@@ -6,17 +6,17 @@ DBA content frequently includes long DataPump commands, GoldenGate configuration
 
 **Blocked by:** 03 — Migrate hardcoded content to MDX
 
-**Status:** ready-for-agent
+**Status:** ✅ DONE
 
-- [ ] `shiki` is installed and importable
-- [ ] `CodeBlock` component uses Shiki to render syntax highlighting server-side (no client-side JS for highlighting)
-- [ ] Supported languages: `sql`, `plsql`, `bash`/`shell`, `yaml`, `json`, `typescript`, `javascript`, `ini`/`properties` (≥ 6 languages minimum)
-- [ ] Each code block displays a language label badge in the top-left corner (e.g., "SQL", "Bash", "YAML")
-- [ ] "Copy to clipboard" button is retained and shows "Copied ✓" confirmation for ~1.8 seconds
-- [ ] Code highlighting adapts to the current theme (dark/light) — uses Shiki dual-theme or CSS variables approach
-- [ ] Code blocks with long lines (>120 characters) render with horizontal scroll (`overflow-x: auto`) without breaking the parent layout
-- [ ] On mobile viewports (320px–768px), code blocks remain contained within the screen width with smooth horizontal scrolling
-- [ ] The old custom `tokenizeSql()` function and its `KEYWORDS`/`TYPES` sets are removed from the codebase
-- [ ] MDX code fences (````sql`, ````bash`, etc.) in existing `.mdx` files render through the new Shiki-powered `CodeBlock`
-- [ ] The custom MDX component map (from Ticket 03) correctly routes `pre`/`code` elements to the new `CodeBlock`
-- [ ] `pnpm run build` completes without errors
+- [x] `shiki` is installed and importable
+- [x] `CodeBlock` component uses Shiki to render syntax highlighting server-side (no client-side JS for highlighting)
+- [x] Supported languages: `sql`, `plsql`, `bash`/`shell`, `yaml`, `json`, `typescript`, `javascript`, `ini`/`properties` (≥ 6 languages minimum)
+- [x] Each code block displays a language label badge in the top-left corner (e.g., "SQL", "Bash", "YAML")
+- [x] "Copy to clipboard" button is retained and shows "Copied ✓" confirmation for ~1.8 seconds
+- [x] Code highlighting adapts to the current theme (dark/light) — uses Shiki dual-theme or CSS variables approach
+- [x] Code blocks with long lines (>120 characters) render with horizontal scroll (`overflow-x: auto`) without breaking the parent layout
+- [x] On mobile viewports (320px–768px), code blocks remain contained within the screen width with smooth horizontal scrolling
+- [x] The old custom `tokenizeSql()` function and its `KEYWORDS`/`TYPES` sets are removed from the codebase
+- [x] MDX code fences (````sql`, ````bash`, etc.) in existing `.mdx` files render through the new Shiki-powered `CodeBlock`
+- [x] The custom MDX component map (from Ticket 03) correctly routes `pre`/`code` elements to the new `CodeBlock`
+- [x] `pnpm run build` completes without errors

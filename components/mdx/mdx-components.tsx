@@ -3,22 +3,49 @@ import Image from "next/image"
 import { CodeBlock } from "@/components/blog/code-block"
 import { ScriptSearch } from "@/components/blog/script-search"
 
+function extractText(node: React.ReactNode): string {
+  if (typeof node === "string") return node
+  if (typeof node === "number") return node.toString()
+  if (Array.isArray(node)) return node.map(extractText).join("")
+  if (node && typeof node === "object" && "props" in node && (node as any).props.children) {
+    return extractText((node as any).props.children)
+  }
+  return ""
+}
+
+function slugify(text: string) {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/&/g, "-and-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-")
+}
+
 export const mdxComponents = {
   h1: ({ children }: { children: React.ReactNode }) => (
     <h1 className="mt-12 mb-6 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
       {children}
     </h1>
   ),
-  h2: ({ children }: { children: React.ReactNode }) => (
-    <h2 className="mt-10 mb-4 text-2xl font-semibold tracking-tight text-foreground">
-      {children}
-    </h2>
-  ),
-  h3: ({ children }: { children: React.ReactNode }) => (
-    <h3 className="mt-8 mb-4 text-xl font-semibold tracking-tight text-foreground">
-      {children}
-    </h3>
-  ),
+  h2: ({ children }: { children: React.ReactNode }) => {
+    const id = slugify(extractText(children))
+    return (
+      <h2 id={id} className="mt-10 mb-4 text-2xl font-semibold tracking-tight text-foreground scroll-m-20">
+        {children}
+      </h2>
+    )
+  },
+  h3: ({ children }: { children: React.ReactNode }) => {
+    const id = slugify(extractText(children))
+    return (
+      <h3 id={id} className="mt-8 mb-4 text-xl font-semibold tracking-tight text-foreground scroll-m-20">
+        {children}
+      </h3>
+    )
+  },
   p: ({ children }: { children: React.ReactNode }) => (
     <div className="mb-6 leading-relaxed text-muted-foreground">
       {children}

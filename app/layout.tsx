@@ -11,7 +11,10 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Adam Hidayat — DBA & Life',
+  title: {
+    template: '%s | Adam Hidayat',
+    default: 'Adam Hidayat — DBA Portfolio & Blog',
+  },
   description: 'Database Administrator specializing in Oracle, SQL Server, PostgreSQL & MySQL. Tech notes, scripts, and life reflections.',
   generator: 'v0.app',
   icons: {

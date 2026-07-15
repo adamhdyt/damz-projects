@@ -21,7 +21,7 @@ const highlights = [
 
 const stats = [
   { value: "4+ Years DBA", icon: Briefcase },
-  { value: "5 Oracle Certs", icon: Award },
+  { value: "6 Oracle Certs", icon: Award },
   { value: "Banking Industry", icon: Building },
 ]
 
@@ -35,6 +35,11 @@ const certifications = [
   {
     title: "Oracle Autonomous Database Cloud 2025 Certified Professional",
     org: "Oracle",
+    image: "/images/certs/eCertificate_Oracle_Autonomous_Database.jpg",
+  },
+  {
+    title: "Oracle Cloud Database Service Administration 2025 Certified Professional",
+    org: "Oracle",
     image: "/images/certs/eCertificate_Oracle_Cloud_Database_Service.jpg",
   },
   {
@@ -46,6 +51,11 @@ const certifications = [
     title: "Oracle Database 19c Administration Workshop",
     org: "Oracle",
     image: "/images/certs/SertifikatOracle_Database19cAdministrationWorkshop.jpg",
+  },
+  {
+    title: "Oracle Database 19c RAC Administration Workshop",
+    org: "Oracle",
+    image: "/images/certs/SertifikatOracle_Database19cRACAdministrationWorkshop.jpg",
   },
   {
     title: "Oracle Database 19c: Backup and Recovery",
@@ -104,6 +114,24 @@ export function AboutIntro() {
             <div className="mt-5 flex items-center gap-1.5 text-sm text-muted-foreground">
               <MapPin className="size-4" />
               <span>Based in Bekasi, West Java, Indonesia</span>
+            </div>
+            
+            {/* Call to Action Buttons */}
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a 
+                href="/resume.pdf" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                Download CV
+              </a>
+              <a 
+                href="mailto:adamhdyt11@gmail.com" 
+                className="inline-flex h-10 items-center justify-center rounded-lg border border-border bg-card px-6 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                Email Me
+              </a>
             </div>
           </div>
         </div>
@@ -210,7 +238,7 @@ export function AboutIntro() {
 
           <details className="group rounded-xl border border-border bg-card shadow-sm open:pb-4">
             <summary className="flex cursor-pointer items-start gap-4 p-4 marker:content-none hover:bg-accent/50 rounded-xl transition-colors">
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-500">
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                 <CheckCircle2 className="size-4" />
               </span>
               <div className="flex flex-col">
@@ -218,7 +246,7 @@ export function AboutIntro() {
                 <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
                   Notable milestones and optimizations.
                 </p>
-                <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-emerald-500">
+                <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-primary">
                   View achievements
                   <ChevronDown className="size-3 transition-transform duration-200 group-open:rotate-180" />
                 </span>

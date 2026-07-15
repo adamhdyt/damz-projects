@@ -6,15 +6,15 @@ After this ticket, a user navigating to `/tech/oracle-scripts` sees the full Ora
 
 **Blocked by:** 02 — Setup MDX content engine
 
-**Status:** ready-for-agent
+**Status:** ✅ DONE
 
-- [ ] `/content/tech/oracle-scripts.mdx` contains the full Oracle Scripts content migrated from the TSX component, with code blocks using standard markdown fences (````sql`, ````plsql`, ````bash`)
-- [ ] `/content/life/gunung.mdx` contains the Mountain Trip journal content migrated from the TSX component, with image references and gallery data
-- [ ] Stub `.mdx` files exist for remaining posts: `designing-type-safe-data-layer.mdx`, `profiling-postgres.mdx`, `understanding-rsc.mdx`, `the-quiet-discipline.mdx`, `notes-small-town.mdx`, `reading-habit.mdx` — each with valid frontmatter and at least 2-3 paragraphs of placeholder content
-- [ ] `components/mdx/mdx-components.tsx` exports a custom component map that handles: headings (h1-h4), paragraphs, links, images (via Next.js `Image`), lists, blockquotes, and code blocks (passed through to `CodeBlock` component)
-- [ ] `/tech/[slug]/page.tsx` uses `getPostBySlug()` + `next-mdx-remote` to compile and render MDX content with the custom component map
-- [ ] `/life/[slug]/page.tsx` uses the same rendering pipeline
-- [ ] Article detail pages display: tag badge, title, date, reading time, and the rendered MDX body
-- [ ] Back navigation from article detail returns to the correct section list (`/tech` or `/life`)
-- [ ] The hardcoded `oracle-scripts.tsx` and `mountain-trip.tsx` components under `components/blog/posts/` are no longer imported by the detail page (can be deleted or left unused)
-- [ ] `pnpm run build` completes without errors and all slug routes are statically generated
+- [x] `/content/tech/oracle-scripts.mdx` contains the full Oracle Scripts content migrated from the TSX component, with code blocks using standard markdown fences (````sql`, ````plsql`, ````bash`)
+- [x] `/content/life/gunung.mdx` contains the Mountain Trip journal content migrated from the TSX component, with image references and gallery data
+- [x] Stub `.mdx` files exist for remaining posts: `designing-type-safe-data-layer.mdx`, `profiling-postgres.mdx`, `understanding-rsc.mdx`, `the-quiet-discipline.mdx`, `notes-small-town.mdx`, `reading-habit.mdx` — each with valid frontmatter and at least 2-3 paragraphs of placeholder content
+- [x] `components/mdx/mdx-components.tsx` exports a custom component map that handles: headings (h1-h4), paragraphs, links, images (via Next.js `Image`), lists, blockquotes, and code blocks (passed through to `CodeBlock` component)
+- [x] `/tech/[slug]/page.tsx` uses `getPostBySlug()` + `next-mdx-remote` to compile and render MDX content with the custom component map
+- [x] `/life/[slug]/page.tsx` uses the same rendering pipeline
+- [x] Article detail pages display: tag badge, title, date, reading time, and the rendered MDX body
+- [x] Back navigation from article detail returns to the correct section list (`/tech` or `/life`)
+- [x] The hardcoded `oracle-scripts.tsx` and `mountain-trip.tsx` components under `components/blog/posts/` are no longer imported by the detail page (can be deleted or left unused)
+- [x] `pnpm run build` completes without errors and all slug routes are statically generated
