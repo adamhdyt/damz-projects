@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight, Clock } from "lucide-react"
-import type { Post } from "@/lib/posts"
+import type { Post } from "@/lib/mdx"
 import { cn } from "@/lib/utils"
 
 export function PostCard({

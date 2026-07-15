@@ -1,109 +1,40 @@
-"use client"
+import { codeToHtml } from "shiki"
+import { CopyButton } from "@/components/blog/copy-button"
 
-import { Fragment, useState } from "react"
-import { Check, Copy } from "lucide-react"
-
-const KEYWORDS = new Set([
-  "select", "from", "where", "and", "or", "not", "in", "is", "null", "as",
-  "join", "left", "right", "inner", "outer", "on", "group", "by", "order",
-  "having", "distinct", "union", "all", "insert", "into", "values", "update",
-  "set", "delete", "create", "alter", "drop", "table", "view", "index",
-  "sequence", "trigger", "procedure", "function", "package", "body", "begin",
-  "end", "declare", "loop", "for", "while", "if", "then", "else", "elsif",
-  "exit", "when", "return", "cursor", "open", "fetch", "close", "commit",
-  "rollback", "grant", "revoke", "constraint", "primary", "key", "foreign",
-  "references", "default", "check", "unique", "add", "modify", "rename",
-  "column", "tablespace", "exception", "raise", "between", "like", "exists",
-  "case", "desc", "asc", "with", "connect", "start", "level", "partition",
-  "over", "using", "merge", "matched", "dbms_output", "put_line", "replace",
-])
-
-const TYPES = new Set([
-  "number", "varchar2", "varchar", "char", "date", "timestamp", "clob",
-  "blob", "integer", "int", "float", "boolean", "long", "raw", "nchar",
-  "nvarchar2", "pls_integer", "binary_integer",
-])
-
-type Token = { text: string; type: string }
-
-function tokenizeSql(code: string): Token[] {
-  const tokens: Token[] = []
-  const re =
-    /(--[^\n]*|\/\*[\s\S]*?\*\/)|('(?:[^']|'')*')|(\b\d+(?:\.\d+)?\b)|([A-Za-z_][A-Za-z0-9_$#]*)|(\s+)|([^\w\s])/g
-  let m: RegExpExecArray | null
-  while ((m = re.exec(code)) !== null) {
-    if (m[1]) tokens.push({ text: m[1], type: "comment" })
-    else if (m[2]) tokens.push({ text: m[2], type: "string" })
-    else if (m[3]) tokens.push({ text: m[3], type: "number" })
-    else if (m[4]) {
-      const lower = m[4].toLowerCase()
-      if (KEYWORDS.has(lower)) tokens.push({ text: m[4], type: "keyword" })
-      else if (TYPES.has(lower)) tokens.push({ text: m[4], type: "type" })
-      else tokens.push({ text: m[4], type: "ident" })
-    } else if (m[5]) tokens.push({ text: m[5], type: "space" })
-    else tokens.push({ text: m[6], type: "punct" })
-  }
-  return tokens
-}
-
-const colorFor: Record<string, string> = {
-  comment: "text-muted-foreground italic",
-  string: "text-chart-3",
-  number: "text-chart-4",
-  keyword: "text-primary font-medium",
-  type: "text-chart-2",
-  punct: "text-muted-foreground",
-  ident: "text-foreground",
-  space: "",
-}
-
-export function CodeBlock({ code }: { code: string }) {
-  const [copied, setCopied] = useState(false)
-  const tokens = tokenizeSql(code)
-
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(code)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 1800)
-    } catch {
-      // clipboard unavailable
-    }
-  }
+export async function CodeBlock({
+  code,
+  lang = "text",
+}: {
+  code: string
+  lang?: string
+}) {
+  // We use dual themes for smooth light/dark mode transitions
+  const html = await codeToHtml(code, {
+    lang,
+    themes: {
+      light: "github-light",
+      dark: "github-dark",
+    },
+    defaultColor: false,
+  })
 
   return (
-    <div className="group relative overflow-hidden rounded-lg border border-border bg-secondary/50">
-      <button
-        type="button"
-        onClick={copy}
-        aria-label={copied ? "Copied" : "Copy code"}
-        className="absolute right-2 top-2 z-10 flex items-center gap-1.5 rounded-md border border-border bg-card px-2 py-1 text-xs font-medium text-muted-foreground opacity-0 transition-opacity hover:text-foreground focus-visible:opacity-100 group-hover:opacity-100"
-      >
-        {copied ? (
-          <>
-            <Check className="size-3.5 text-chart-3" />
-            Copied
-          </>
-        ) : (
-          <>
-            <Copy className="size-3.5" />
-            Copy
-          </>
-        )}
-      </button>
-      <pre className="overflow-x-auto p-4 text-[13px] leading-relaxed">
-        <code className="font-mono">
-          {tokens.map((t, i) => (
-            <Fragment key={i}>
-              {t.type === "space" ? (
-                t.text
-              ) : (
-                <span className={colorFor[t.type]}>{t.text}</span>
-              )}
-            </Fragment>
-          ))}
-        </code>
-      </pre>
+    <div className="group relative my-6 overflow-hidden rounded-xl border border-border bg-secondary/30">
+      {/* Language Badge */}
+      <div className="absolute left-4 top-0 -translate-y-px rounded-b-md border border-t-0 border-border bg-muted/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground backdrop-blur-md">
+        {lang}
+      </div>
+
+      <CopyButton code={code} />
+
+      {/* 
+        We inject the dangerouslySetInnerHTML inside a div so we can style the <pre> tag Shiki generates.
+        Shiki generates dual-theme variables when defaultColor is false.
+      */}
+      <div
+        className="[&>pre]:overflow-x-auto [&>pre]:p-5 [&>pre]:pt-10 [&>pre]:text-[13px] [&>pre]:leading-relaxed"
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
     </div>
   )
 }

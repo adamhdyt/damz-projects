@@ -1,0 +1,127 @@
+---
+title: "My Oracle Database Script Vault"
+excerpt: "A living collection of Oracle SQL and PL/SQL snippets I reach for again and again — tuning, monitoring, backups, and everyday DBA chores. Searchable and copy-ready."
+category: "tech"
+tag: "Databases"
+date: "Jul 12, 2026"
+readingTime: "Reference"
+featured: true
+cover: "/images/post-oracle.png"
+---
+<ScriptSearch />
+
+<Script title="Top SQL by CPU time" category="Performance">
+Find the most CPU-intensive statements in the shared pool — the usual first stop when the database feels slow.
+
+```sql
+SELECT sql_id,
+       ROUND(cpu_time / 1e6, 2) AS cpu_seconds,
+       executions,
+       ROUND(elapsed_time / 1e6, 2) AS elapsed_seconds,
+       SUBSTR(sql_text, 1, 80) AS sql_preview
+FROM   v$sqlarea
+ORDER  BY cpu_time DESC
+FETCH FIRST 10 ROWS ONLY;
+```
+</Script>
+
+<Script title="Tablespace free space" category="Monitoring">
+Report used vs. free space per tablespace so you can catch a full datafile before it pages you at 3 a.m.
+
+```sql
+SELECT df.tablespace_name,
+       ROUND(df.total_mb, 1) AS total_mb,
+       ROUND(df.total_mb - fs.free_mb, 1) AS used_mb,
+       ROUND(fs.free_mb, 1) AS free_mb,
+       ROUND((df.total_mb - fs.free_mb) / df.total_mb * 100, 1) AS pct_used
+FROM   (SELECT tablespace_name, SUM(bytes) / 1024 / 1024 total_mb
+        FROM   dba_data_files
+        GROUP  BY tablespace_name) df
+JOIN   (SELECT tablespace_name, SUM(bytes) / 1024 / 1024 free_mb
+        FROM   dba_free_space
+        GROUP  BY tablespace_name) fs
+  ON   df.tablespace_name = fs.tablespace_name
+ORDER  BY pct_used DESC;
+```
+</Script>
+
+<Script title="Find blocking sessions" category="Monitoring">
+List sessions that are blocking others, including the blocker and waiter SIDs. Great for diagnosing lock contention.
+
+```sql
+SELECT s.blocking_session AS blocker_sid,
+       s.sid              AS waiter_sid,
+       s.username,
+       s.event,
+       s.seconds_in_wait
+FROM   v$session s
+WHERE  s.blocking_session IS NOT NULL
+ORDER  BY s.seconds_in_wait DESC;
+```
+</Script>
+
+<Script title="Generate index rebuild statements" category="Maintenance">
+Produce ALTER INDEX ... REBUILD ONLINE commands for a schema. Review the output before running it.
+
+```sql
+SELECT 'ALTER INDEX ' || index_name || ' REBUILD ONLINE;' AS ddl
+FROM   user_indexes
+WHERE  index_type = 'NORMAL'
+  AND  status = 'VALID'
+ORDER  BY index_name;
+```
+</Script>
+
+<Script title="Gather schema statistics" category="Maintenance">
+Refresh optimizer statistics for a whole schema so the cost-based optimizer makes good plan choices.
+
+```plsql
+BEGIN
+  DBMS_STATS.GATHER_SCHEMA_STATS(
+    ownname          => 'APP_OWNER',
+    estimate_percent => DBMS_STATS.AUTO_SAMPLE_SIZE,
+    cascade          => TRUE,
+    degree           => 4
+  );
+END;
+/
+```
+</Script>
+
+<Script title="log failed logins" category="PL/SQL">
+A simple procedure that records failed login attempts into an audit table for a lightweight security trail.
+
+```plsql
+CREATE OR REPLACE PROCEDURE log_failed_login (
+  p_username IN VARCHAR2,
+  p_ip       IN VARCHAR2
+) AS
+BEGIN
+  INSERT INTO login_audit (username, ip_address, attempted_at, status)
+  VALUES (p_username, p_ip, SYSTIMESTAMP, 'FAILED');
+  COMMIT;
+EXCEPTION
+  WHEN OTHERS THEN
+    ROLLBACK;
+    RAISE;
+END log_failed_login;
+/
+```
+</Script>
+
+<Script title="Data Pump export (schema backup)" category="Backup">
+A Data Pump command to export a single schema. Run from the OS shell with a configured directory object.
+
+```bash
+# Create the directory object once (as a privileged user)
+# CREATE OR REPLACE DIRECTORY dp_dir AS '/u01/backups';
+# GRANT READ, WRITE ON DIRECTORY dp_dir TO app_owner;
+
+# Then export from the shell:
+expdp app_owner/password \
+  schemas=APP_OWNER \
+  directory=dp_dir \
+  dumpfile=app_owner_%U.dmp \
+  logfile=app_owner_exp.log
+```
+</Script>

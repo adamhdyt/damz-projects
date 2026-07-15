@@ -11,8 +11,8 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Hybrid — Tech Notes & Life',
-  description: 'A hybrid blog covering engineering deep-dives and life reflections.',
+  title: 'Adam Hidayat — DBA & Life',
+  description: 'Database Administrator specializing in Oracle, SQL Server, PostgreSQL & MySQL. Tech notes, scripts, and life reflections.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -52,7 +52,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${jetbrainsMono.variable} bg-background`}
     >
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

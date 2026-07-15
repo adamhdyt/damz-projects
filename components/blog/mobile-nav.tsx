@@ -26,7 +26,7 @@ export function MobileNav() {
   return (
     <div className="flex items-center gap-2 border-b border-border bg-sidebar px-4 py-3 md:hidden">
       <Link href="/" className="mr-2 flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-        <span className="font-mono text-sm font-bold">H</span>
+        <span className="font-mono text-xs font-bold">AH</span>
       </Link>
       <nav aria-label="Sections" className="flex items-center gap-1 overflow-x-auto">
         {items.map((item) => {

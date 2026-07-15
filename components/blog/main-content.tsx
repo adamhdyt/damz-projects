@@ -1,7 +1,6 @@
 import { Search } from "lucide-react"
-import { posts } from "@/lib/posts"
 import { PostCard } from "@/components/blog/post-card"
-import type { Category } from "@/lib/posts"
+import type { Category, Post } from "@/lib/mdx"
 
 const sectionMeta: Record<Category, { title: string; description: string }> = {
   tech: {
@@ -16,11 +15,12 @@ const sectionMeta: Record<Category, { title: string; description: string }> = {
 
 export function MainContent({
   section,
+  posts,
 }: {
   section: Category
+  posts: Post[]
 }) {
   const meta = sectionMeta[section]
-  const filtered = posts.filter((p) => p.category === section)
 
   return (
     <main className="flex h-full flex-col overflow-y-auto">
@@ -44,7 +44,7 @@ export function MainContent({
       {/* Post grid */}
       <div className="px-6 py-8 sm:px-8">
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-          {filtered.map((post) => (
+          {posts.map((post) => (
             <div
               key={post.id}
               className={post.featured ? "lg:col-span-2" : undefined}
@@ -55,7 +55,7 @@ export function MainContent({
         </div>
 
         <p className="mt-10 text-center text-xs text-muted-foreground">
-          Showing {filtered.length} {filtered.length === 1 ? "post" : "posts"}
+          Showing {posts.length} {posts.length === 1 ? "post" : "posts"}
           {" in this section"}.
         </p>
       </div>

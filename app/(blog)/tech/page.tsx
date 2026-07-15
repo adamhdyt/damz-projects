@@ -1,5 +1,7 @@
 import { MainContent } from "@/components/blog/main-content"
+import { getAllPosts } from "@/lib/mdx"
 
 export default function TechPage() {
-  return <MainContent section="tech" />
+  const posts = getAllPosts("tech")
+  return <MainContent section="tech" posts={posts} />
 }

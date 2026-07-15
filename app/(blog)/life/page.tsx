@@ -1,5 +1,7 @@
 import { MainContent } from "@/components/blog/main-content"
+import { getAllPosts } from "@/lib/mdx"
 
 export default function LifePage() {
-  return <MainContent section="life" />
+  const posts = getAllPosts("life")
+  return <MainContent section="life" posts={posts} />
 }

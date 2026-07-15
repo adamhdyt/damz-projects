@@ -162,4 +162,20 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Shiki dual-theme support */
+  .shiki, .shiki span {
+    color: var(--shiki-light);
+    background-color: var(--shiki-light-bg);
+  }
+  .dark .shiki, .dark .shiki span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not(.light) .shiki, :root:not(.light) .shiki span {
+      color: var(--shiki-dark);
+      background-color: var(--shiki-dark-bg);
+    }
+  }
 }
