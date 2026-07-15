@@ -94,11 +94,6 @@ export function Sidebar({ isCollapsed = false, onToggle }: { isCollapsed?: boole
 
       {/* Navigation */}
       <nav aria-label="Primary" className="flex flex-col gap-1 w-full">
-        {!isCollapsed && (
-          <p className="px-3 pb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            Browse
-          </p>
-        )}
         {navItems.map((item) => {
           const Icon = item.icon
           const isActive = active === item.id
