@@ -119,9 +119,10 @@ export function AboutIntro() {
             {/* Call to Action Buttons */}
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a 
-                href="/resume.pdf" 
+                href="/CV/Adam_Hidayat_DBA_CV.pdf" 
                 target="_blank"
                 rel="noopener noreferrer"
+                download="Adam_Hidayat_DBA_CV.pdf"
                 className="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 Download CV
