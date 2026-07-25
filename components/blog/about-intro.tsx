@@ -89,7 +89,7 @@ export function AboutIntro() {
             <div className="absolute -inset-3 rounded-full bg-primary/10 blur-2xl" aria-hidden />
             <Image
               src="/images/portrait.png"
-              alt="Adam Hidayat — Database Administrator"
+              alt="Adam Hidayat - Database Administrator"
               width={200}
               height={200}
               priority
@@ -103,23 +103,23 @@ export function AboutIntro() {
               Open to opportunities
             </span>
             <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground text-balance sm:text-4xl lg:text-5xl">
-              Hi, I&apos;m Adam Hidayat — Database Administrator.
+              Hi, I&apos;m Adam Hidayat - Database Administrator.
             </h1>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg text-pretty">
               I specialize in managing and optimizing enterprise databases to ensure
               seamless performance, robust security, and high availability. With 4+ years
-              of experience across Oracle, SQL Server, MySQL, and PostgreSQL — currently
+              of experience across Oracle, SQL Server, MySQL, and PostgreSQL - currently
               working in the banking industry.
             </p>
             <div className="mt-5 flex items-center gap-1.5 text-sm text-muted-foreground">
               <MapPin className="size-4" />
               <span>Based in Bekasi, West Java, Indonesia</span>
             </div>
-            
+
             {/* Call to Action Buttons */}
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <a 
-                href="/CV/Adam_Hidayat_DBA_CV.pdf" 
+              <a
+                href="/CV/Adam_Hidayat_DBA_CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 download="Adam_Hidayat_DBA_CV.pdf"
@@ -127,8 +127,8 @@ export function AboutIntro() {
               >
                 Download CV
               </a>
-              <a 
-                href="mailto:adamhdyt11@gmail.com" 
+              <a
+                href="mailto:adamhdyt11@gmail.com"
                 className="inline-flex h-10 items-center justify-center rounded-lg border border-border bg-card px-6 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 Email Me
@@ -220,9 +220,9 @@ export function AboutIntro() {
                         <span className="text-sm font-medium text-foreground">{cert.title}</span>
                         <span className="text-xs text-muted-foreground">{cert.org}</span>
                       </div>
-                      <a 
-                        href={cert.image} 
-                        target="_blank" 
+                      <a
+                        href={cert.image}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="shrink-0 rounded-full bg-primary/10 p-2 text-primary opacity-0 transition-all group-hover:opacity-100 focus:opacity-100 hover:bg-primary/20"
                         aria-label={`View ${cert.title} certificate`}
