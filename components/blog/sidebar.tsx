@@ -126,17 +126,19 @@ export function Sidebar({ isCollapsed = false, onToggle }: { isCollapsed?: boole
         })}
       </nav>
 
-      {/* Meta Navigation */}
-      <nav aria-label="Meta" className={cn("flex flex-col w-full", isCollapsed ? "hidden" : "")}>
-        <div className="flex flex-wrap gap-x-4 gap-y-2 px-3 mt-4 text-xs font-medium text-muted-foreground">
-          <Link href="/about" className="hover:text-sidebar-foreground transition-colors">About</Link>
-          <Link href="/contact" className="hover:text-sidebar-foreground transition-colors">Contact</Link>
-          <Link href="/privacy-policy" className="hover:text-sidebar-foreground transition-colors">Privacy</Link>
-        </div>
-      </nav>
 
-      {/* Footer / socials */}
-      <div className={cn("mt-auto flex border-t border-border pt-4 w-full", isCollapsed ? "flex-col items-center gap-4" : "items-center gap-1")}>
+      <div className="mt-auto flex flex-col gap-6 w-full">
+        {/* Meta Navigation */}
+        <nav aria-label="Meta" className={cn("flex flex-col w-full", isCollapsed ? "hidden" : "")}>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 px-3 justify-center text-xs font-medium text-muted-foreground">
+            <Link href="/about" className="hover:text-sidebar-foreground transition-colors">About</Link>
+            <Link href="/contact" className="hover:text-sidebar-foreground transition-colors">Contact</Link>
+            <Link href="/privacy-policy" className="hover:text-sidebar-foreground transition-colors">Privacy</Link>
+          </div>
+        </nav>
+
+        {/* Footer / socials */}
+        <div className={cn("flex border-t border-border pt-4 w-full", isCollapsed ? "flex-col items-center gap-4" : "items-center gap-1")}>
         {!isCollapsed && [
           { icon: GitHubIcon, label: "GitHub", href: "https://github.com/adamhdyt" },
           { icon: LinkedInIcon, label: "LinkedIn", href: "https://www.linkedin.com/in/adamhdyt" },
@@ -165,6 +167,7 @@ export function Sidebar({ isCollapsed = false, onToggle }: { isCollapsed?: boole
             {isCollapsed ? <PanelLeftOpen className="size-4" /> : <PanelLeftClose className="size-4" />}
           </button>
         )}
+      </div>
       </div>
     </aside>
   )
