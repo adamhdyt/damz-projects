@@ -42,7 +42,7 @@ export function PostCard({
             <span className="text-sm font-medium text-white/80">{post.date}</span>
           </div>
 
-          <h3 className="mt-4 text-balance text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-primary-foreground sm:text-3xl lg:text-4xl">
+          <h3 className="mt-4 text-balance text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-white/80 sm:text-3xl lg:text-4xl">
             <Link
               href={href}
               className="text-left after:absolute after:inset-0 after:content-[''] focus:outline-none"

@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react"
 import type { Post } from "@/lib/mdx"
 import { ReadingProgress } from "@/components/blog/reading-progress"
 import { TableOfContents } from "@/components/blog/table-of-contents"
+import { AdBanner } from "@/components/blog/ad-banner"
 
 export function PostDetail({
   post,
@@ -48,6 +49,8 @@ export function PostDetail({
               <div className="text-[15px] leading-relaxed text-muted-foreground">
                 <p className="text-lg text-foreground mb-8">{post.excerpt}</p>
                 {children}
+                <hr className="my-10 border-border" />
+                <AdBanner dataAdSlot="bottom-article-slot" className="mt-8" />
               </div>
             </div>
           </article>
