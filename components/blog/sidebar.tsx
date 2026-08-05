@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { Home, Code2, Coffee, Mail } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "@/components/blog/theme-toggle"
+import { NewsletterForm } from "@/components/blog/newsletter-form"
 
 export type Section = "home" | "tech" | "life"
 
@@ -128,6 +129,7 @@ export function Sidebar({ isCollapsed = false, onToggle }: { isCollapsed?: boole
 
 
       <div className="mt-auto flex flex-col gap-6 w-full">
+        <NewsletterForm isCollapsed={isCollapsed} />
         {/* Meta Navigation */}
         <nav aria-label="Meta" className={cn("flex flex-col w-full", isCollapsed ? "hidden" : "")}>
           <div className="flex flex-wrap gap-x-4 gap-y-2 px-3 justify-center text-xs font-medium text-muted-foreground">

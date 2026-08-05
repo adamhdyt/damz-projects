@@ -22,7 +22,7 @@ export function MainContent({
   const meta = sectionMeta[section]
 
   return (
-    <main className="flex h-full flex-col overflow-y-auto">
+    <main className="flex h-full flex-col">
       {/* Top bar (Title and Description only) */}
       <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-border bg-background/80 px-6 py-4 backdrop-blur-md sm:px-8">
         <div>

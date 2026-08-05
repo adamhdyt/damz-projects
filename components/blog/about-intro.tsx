@@ -81,7 +81,7 @@ const achievements = [
 
 export function AboutIntro() {
   return (
-    <main className="flex h-full flex-col overflow-y-auto">
+    <main className="flex h-full flex-col">
       {/* Hero */}
       <section className="border-b border-border px-6 py-12 sm:px-10 lg:py-16">
         <div className="flex flex-col items-start gap-10 lg:flex-row lg:items-center">

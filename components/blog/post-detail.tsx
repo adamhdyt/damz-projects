@@ -4,6 +4,10 @@ import type { Post } from "@/lib/mdx"
 import { ReadingProgress } from "@/components/blog/reading-progress"
 import { TableOfContents } from "@/components/blog/table-of-contents"
 import { AdBanner } from "@/components/blog/ad-banner"
+import { getAllPosts } from "@/lib/mdx"
+import { RelatedPosts } from "@/components/blog/related-posts"
+import { ShareButtons } from "@/components/blog/share-buttons"
+import { Comments } from "@/components/blog/comments"
 
 export function PostDetail({
   post,
@@ -14,8 +18,10 @@ export function PostDetail({
   backHref: string
   children: React.ReactNode
 }) {
+  const allPosts = getAllPosts()
+
   return (
-    <main className="flex h-full flex-col overflow-y-auto">
+    <main className="flex h-full flex-col">
       <ReadingProgress />
       <header className="sticky top-0 z-10 flex items-center gap-3 border-b border-border bg-background/80 px-6 py-4 backdrop-blur-md sm:px-8">
         <Link
@@ -49,8 +55,11 @@ export function PostDetail({
               <div className="text-[15px] leading-relaxed text-muted-foreground">
                 <p className="text-lg text-foreground mb-8">{post.excerpt}</p>
                 {children}
+                <ShareButtons title={post.title} />
                 <hr className="my-10 border-border" />
                 <AdBanner dataAdSlot="bottom-article-slot" className="mt-8" />
+                <RelatedPosts currentPost={post} allPosts={allPosts} />
+                <Comments />
               </div>
             </div>
           </article>

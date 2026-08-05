@@ -20,6 +20,12 @@ export async function generateMetadata({
   const post = getPostBySlug("life", slug)
   if (!post) return {}
 
+  const ogUrl = new URL("https://adamhdyt.com/api/og")
+  ogUrl.searchParams.set("title", post.title)
+  ogUrl.searchParams.set("category", "Life")
+  ogUrl.searchParams.set("date", post.date)
+  const ogImage = post.cover || ogUrl.toString()
+
   return {
     title: post.title,
     description: post.excerpt,
@@ -28,16 +34,14 @@ export async function generateMetadata({
       description: post.excerpt,
       type: "article",
       url: `https://adamhdyt.com/life/${slug}`,
-      ...(post.cover && {
-        images: [
-          {
-            url: post.cover,
-            width: 1200,
-            height: 630,
-            alt: post.title,
-          },
-        ],
-      }),
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
   }
 }
