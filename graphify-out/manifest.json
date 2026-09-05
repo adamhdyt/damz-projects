@@ -85,8 +85,8 @@
     "semantic_hash": ""
   },
   "components/blog/about-intro.tsx": {
-    "mtime": 1788631625.3264031,
-    "ast_hash": "663beecb07a9baebd032dce8f27e8a9f",
+    "mtime": 1788632941.2985296,
+    "ast_hash": "164f31d708edd5bb66d95c4c36bc9dcb",
     "semantic_hash": ""
   },
   "components/blog/ad-banner.tsx": {
@@ -490,8 +490,8 @@
     "semantic_hash": ""
   },
   "components/navigation/footer.tsx": {
-    "mtime": 1788628073.6828861,
-    "ast_hash": "b2766ecf04728077ee1fc69e987410a4",
+    "mtime": 1788632803.305645,
+    "ast_hash": "c94e155f826b48bfe5a7a2810bc93f44",
     "semantic_hash": ""
   },
   "components/ui/icons.tsx": {
@@ -542,6 +542,26 @@
   "components/home/selected-work-section.tsx": {
     "mtime": 1788631611.626503,
     "ast_hash": "794c19aed0229d0fe752705d2c302fd6",
+    "semantic_hash": ""
+  },
+  "components/home/faq-section.tsx": {
+    "mtime": 1788632758.9395754,
+    "ast_hash": "df7b5ea27d45fbc3494055970ef0f152",
+    "semantic_hash": ""
+  },
+  "components/home/hero-scroll-showcase.tsx": {
+    "mtime": 1788633861.5794282,
+    "ast_hash": "bd38dc1bc7784e0c6d09fd79b1a45c1a",
+    "semantic_hash": ""
+  },
+  "components/home/lets-build-section.tsx": {
+    "mtime": 1788632775.4781544,
+    "ast_hash": "f3f96f3a2ed130728571703cc6e5b2f2",
+    "semantic_hash": ""
+  },
+  "components/home/services-section.tsx": {
+    "mtime": 1788632830.5008457,
+    "ast_hash": "713a136291e7aa62896e087b4f686605",
     "semantic_hash": ""
   }
 }

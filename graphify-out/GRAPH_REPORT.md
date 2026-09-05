@@ -1,16 +1,16 @@
 # Graph Report - damz-projects  (2026-09-06)
 
 ## Corpus Check
-- 81 files · ~920,823 words
+- 85 files · ~923,859 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 416 nodes · 525 edges · 37 communities (23 shown, 14 thin omitted)
+- 433 nodes · 543 edges · 39 communities (23 shown, 16 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 3 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b05f587a`
+- Built from commit: `6f01fc2b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -24,8 +24,10 @@
 - devDependencies
 - components.json
 - Process
+- hero-section.tsx
 - graphify reference: extra exports and benchmark
 - app/layout.tsx
+- selected-work-section.tsx
 - graphify reference: query, path, explain
 - mountain-journal.mdx
 - graphify reference: add a URL and watch a folder
@@ -63,8 +65,6 @@
 10. `GitHubIcon()` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `ContentPillarsProps` --references--> `Post`  [EXTRACTED]
-  components/home/content-pillars.tsx → lib/mdx.ts
 - `generateStaticParams()` --calls--> `getAllPosts()`  [EXTRACTED]
   app/(blog)/life/[slug]/page.tsx → lib/mdx.ts
 - `generateMetadata()` --calls--> `getPostBySlug()`  [EXTRACTED]
@@ -73,23 +73,25 @@
   app/(blog)/life/[slug]/page.tsx → lib/mdx.ts
 - `LifePage()` --calls--> `getAllPosts()`  [EXTRACTED]
   app/(blog)/life/page.tsx → lib/mdx.ts
+- `generateStaticParams()` --calls--> `getAllPosts()`  [EXTRACTED]
+  app/(blog)/tech/[slug]/page.tsx → lib/mdx.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (37 total, 14 thin omitted)
+## Communities (39 total, 16 thin omitted)
 
 ### Community 0 - "cn"
-Cohesion: 0.08
-Nodes (30): AdBanner(), AdBannerProps, AffiliateDisclosure(), CodeBlock(), Comments(), CopyButton(), getActiveSection(), items (+22 more)
+Cohesion: 0.09
+Nodes (23): AdBanner(), AdBannerProps, AffiliateDisclosure(), CodeBlock(), CopyButton(), getActiveSection(), items, MobileNav() (+15 more)
 
 ### Community 1 - "dependencies"
 Cohesion: 0.05
 Nodes (41): @base-ui/react, class-variance-authority, clsx, framer-motion, @giscus/react, gray-matter, lucide-react, next (+33 more)
 
 ### Community 2 - "post-detail.tsx"
-Cohesion: 0.14
-Nodes (20): LifePage(), metadata, generateMetadata(), generateStaticParams(), LifeArticlePage(), metadata, TechPage(), generateMetadata() (+12 more)
+Cohesion: 0.10
+Nodes (28): LifePage(), metadata, generateMetadata(), generateStaticParams(), LifeArticlePage(), metadata, TechPage(), generateMetadata() (+20 more)
 
 ### Community 3 - "compilerOptions"
 Cohesion: 0.07
@@ -152,32 +154,32 @@ Cohesion: 0.07
 Nodes (26): 1.1 Problem Statement, 1.2 Proposed Solution, 1.3 Success Criteria, 1. Executive Summary, 2.1 User Personas, 2.2 User Stories & Acceptance Criteria, 2.3 Non-Goals (Out of Scope), 2. User Experience & Functionality (+18 more)
 
 ### Community 39 - "floating-pill-nav.tsx"
-Cohesion: 0.12
-Nodes (18): subscribe(), subscribeSchema, competencies, experience, metadata, directChannels, metadata, BlogLayoutClient() (+10 more)
+Cohesion: 0.10
+Nodes (21): subscribe(), subscribeSchema, competencies, experience, metadata, directChannels, metadata, BlogLayoutClient() (+13 more)
 
 ### Community 40 - "hero-section.tsx"
-Cohesion: 0.12
-Nodes (14): metadata, AboutIntro(), AboutQuoteSection(), CERTIFICATIONS_DATA, CertificationsGrid(), ContentPillars(), ContentPillarsProps, heroCards (+6 more)
+Cohesion: 0.09
+Nodes (17): metadata, AboutIntro(), AboutQuoteSection(), CERTIFICATIONS_DATA, CertificationsGrid(), FAQ_CATEGORIES, FAQ_DATA, FAQCategory (+9 more)
 
 ## Knowledge Gaps
-- **203 isolated node(s):** `metadata`, `experience`, `competencies`, `metadata`, `directChannels` (+198 more)
+- **210 isolated node(s):** `metadata`, `experience`, `competencies`, `metadata`, `directChannels` (+205 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `cn()` connect `cn` to `floating-pill-nav.tsx`?**
+- **Why does `cn()` connect `cn` to `post-detail.tsx`, `floating-pill-nav.tsx`?**
   _High betweenness centrality (0.030) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `dependencies` to `devDependencies`?**
-  _High betweenness centrality (0.020) - this node is a cross-community bridge._
-- **Why does `getAllPosts()` connect `post-detail.tsx` to `hero-section.tsx`, `cn`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
+- **Why does `getAllPosts()` connect `post-detail.tsx` to `hero-section.tsx`?**
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **What connects `metadata`, `experience`, `competencies` to the rest of the system?**
-  _203 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _210 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `cn` be split into smaller, more focused modules?**
-  _Cohesion score 0.07547169811320754 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09487179487179487 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.04878048780487805 - nodes in this community are weakly interconnected._
 - **Should `post-detail.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.14245014245014245 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10104529616724739 - nodes in this community are weakly interconnected._
