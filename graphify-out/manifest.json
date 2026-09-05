@@ -85,8 +85,8 @@
     "semantic_hash": ""
   },
   "components/blog/about-intro.tsx": {
-    "mtime": 1788628485.04567,
-    "ast_hash": "7f90169254cd3572fcb62e7c66bd7cc1",
+    "mtime": 1788628865.9682205,
+    "ast_hash": "392df679edbe68b8d7385842f36c10c4",
     "semantic_hash": ""
   },
   "components/blog/ad-banner.tsx": {
@@ -507,6 +507,11 @@
   "components/home/hero-section.tsx": {
     "mtime": 1788628420.998276,
     "ast_hash": "9974f2507c85ff7a8433fca7e1f6714e",
+    "semantic_hash": ""
+  },
+  "components/home/scroll-showcase.tsx": {
+    "mtime": 1788628827.83836,
+    "ast_hash": "a142868acb957049e4ab41ae3cbc1c5e",
     "semantic_hash": ""
   }
 }

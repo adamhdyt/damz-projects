@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Code2, Coffee, MapPin, Database, Shield, Zap, Award, CheckCircle2, ExternalLink, ChevronDown, Briefcase, Building } from "lucide-react"
-import { HeroSection } from "@/components/home/hero-section"
+import { ScrollShowcase } from "@/components/home/scroll-showcase"
 
 const highlights = [
   {
@@ -83,11 +83,11 @@ const achievements = [
 export function AboutIntro() {
   return (
     <main className="flex h-full flex-col">
-      {/* New Creative Portfolio Hero Section */}
-      <HeroSection />
+      {/* Signature Scroll-Linked Hero & Selected Work Showcase */}
+      <ScrollShowcase />
 
       {/* What you'll find here */}
-      <section className="px-6 py-12 sm:px-10">
+      <section className="px-6 py-12 sm:px-10 border-t border-border/80">
         <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
           What you&apos;ll find here
         </h2>
@@ -115,8 +115,8 @@ export function AboutIntro() {
           ))}
         </div>
 
-        {/* Certifications & Achievements (Accordion) */}
-        <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2 items-start">
+        {/* Certifications (Accordion placeholder until Ticket 05) */}
+        <div id="certifications" className="mt-8">
           <details className="group rounded-xl border border-border bg-card shadow-sm open:pb-4">
             <summary className="flex cursor-pointer items-start gap-4 p-4 marker:content-none hover:bg-accent/50 rounded-xl transition-colors">
               <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
@@ -153,34 +153,6 @@ export function AboutIntro() {
                         <ExternalLink className="size-4" />
                       </a>
                     </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </details>
-
-          <details className="group rounded-xl border border-border bg-card shadow-sm open:pb-4">
-            <summary className="flex cursor-pointer items-start gap-4 p-4 marker:content-none hover:bg-accent/50 rounded-xl transition-colors">
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                <CheckCircle2 className="size-4" />
-              </span>
-              <div className="flex flex-col">
-                <h3 className="text-sm font-semibold text-foreground">Key Achievements</h3>
-                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                  Notable milestones and optimizations.
-                </p>
-                <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-primary">
-                  View achievements
-                  <ChevronDown className="size-3 transition-transform duration-200 group-open:rotate-180" />
-                </span>
-              </div>
-            </summary>
-            <div className="border-t border-border px-6 pt-6">
-              <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {achievements.map((item) => (
-                  <li key={item.title} className="flex flex-col gap-2 rounded-xl border border-border bg-card p-4">
-                    <span className="text-sm font-semibold text-foreground">{item.title}</span>
-                    <span className="text-sm leading-relaxed text-muted-foreground">{item.description}</span>
                   </li>
                 ))}
               </ul>

@@ -846,8 +846,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_blog_code_block",
-      "community": 0,
-      "community_name": "cn",
+      "community": 2,
+      "community_name": "post-detail.tsx",
       "norm_label": "code-block.tsx"
     },
     {
@@ -857,8 +857,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "components_blog_code_block_codeblock",
-      "community": 0,
-      "community_name": "cn",
+      "community": 2,
+      "community_name": "post-detail.tsx",
       "norm_label": "codeblock()"
     },
     {
@@ -890,8 +890,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_blog_copy_button",
-      "community": 0,
-      "community_name": "cn",
+      "community": 2,
+      "community_name": "post-detail.tsx",
       "norm_label": "copy-button.tsx"
     },
     {
@@ -901,8 +901,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_blog_copy_button_copybutton",
-      "community": 0,
-      "community_name": "cn",
+      "community": 2,
+      "community_name": "post-detail.tsx",
       "norm_label": "copybutton()"
     },
     {
@@ -1011,8 +1011,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_blog_post_card",
-      "community": 2,
-      "community_name": "post-detail.tsx",
+      "community": 0,
+      "community_name": "cn",
       "norm_label": "post-card.tsx"
     },
     {
@@ -1022,8 +1022,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "components_blog_post_card_postcard",
-      "community": 2,
-      "community_name": "post-detail.tsx",
+      "community": 0,
+      "community_name": "cn",
       "norm_label": "postcard()"
     },
     {
@@ -1055,8 +1055,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_blog_post_list_with_search",
-      "community": 2,
-      "community_name": "post-detail.tsx",
+      "community": 0,
+      "community_name": "cn",
       "norm_label": "post-list-with-search.tsx"
     },
     {
@@ -1066,8 +1066,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "components_blog_post_list_with_search_postlistwithsearch",
-      "community": 2,
-      "community_name": "post-detail.tsx",
+      "community": 0,
+      "community_name": "cn",
       "norm_label": "postlistwithsearch()"
     },
     {
@@ -1352,8 +1352,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_home_hero_section",
-      "community": 9,
-      "community_name": "about-intro.tsx",
+      "community": 40,
+      "community_name": "hero-section.tsx",
       "norm_label": "hero-section.tsx"
     },
     {
@@ -1363,8 +1363,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "components_home_hero_section_herocards",
-      "community": 9,
-      "community_name": "about-intro.tsx",
+      "community": 40,
+      "community_name": "hero-section.tsx",
       "norm_label": "herocards"
     },
     {
@@ -1374,9 +1374,42 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "components_home_hero_section_herosection",
+      "community": 40,
+      "community_name": "hero-section.tsx",
+      "norm_label": "herosection()"
+    },
+    {
+      "label": "scroll-showcase.tsx",
+      "file_type": "code",
+      "source_file": "components/home/scroll-showcase.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_home_scroll_showcase",
       "community": 9,
       "community_name": "about-intro.tsx",
-      "norm_label": "herosection()"
+      "norm_label": "scroll-showcase.tsx"
+    },
+    {
+      "label": "showcaseProjects",
+      "file_type": "code",
+      "source_file": "components/home/scroll-showcase.tsx",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "components_home_scroll_showcase_showcaseprojects",
+      "community": 9,
+      "community_name": "about-intro.tsx",
+      "norm_label": "showcaseprojects"
+    },
+    {
+      "label": "ScrollShowcase()",
+      "file_type": "code",
+      "source_file": "components/home/scroll-showcase.tsx",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "components_home_scroll_showcase_scrollshowcase",
+      "community": 9,
+      "community_name": "about-intro.tsx",
+      "norm_label": "scrollshowcase()"
     },
     {
       "label": "mdx-components.tsx",
@@ -1385,8 +1418,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_mdx_mdx_components",
-      "community": 0,
-      "community_name": "cn",
+      "community": 2,
+      "community_name": "post-detail.tsx",
       "norm_label": "mdx-components.tsx"
     },
     {
@@ -1396,8 +1429,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "components_mdx_mdx_components_extracttext",
-      "community": 0,
-      "community_name": "cn",
+      "community": 2,
+      "community_name": "post-detail.tsx",
       "norm_label": "extracttext()"
     },
     {
@@ -1407,8 +1440,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "components_mdx_mdx_components_slugify",
-      "community": 0,
-      "community_name": "cn",
+      "community": 2,
+      "community_name": "post-detail.tsx",
       "norm_label": "slugify()"
     },
     {
@@ -5489,7 +5522,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_blog_about_intro",
-      "target": "components_home_hero_section",
+      "target": "components_home_scroll_showcase",
       "confidence_score": 1.0
     },
     {
@@ -5501,7 +5534,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_blog_about_intro",
-      "target": "components_home_hero_section_herosection",
+      "target": "components_home_scroll_showcase_scrollshowcase",
       "confidence_score": 1.0
     },
     {
@@ -6955,6 +6988,28 @@
       "_origin": "ast",
       "source": "components_home_hero_section",
       "target": "components_home_hero_section_herosection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/home/scroll-showcase.tsx",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_home_scroll_showcase",
+      "target": "components_home_scroll_showcase_scrollshowcase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/home/scroll-showcase.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_home_scroll_showcase",
+      "target": "components_home_scroll_showcase_showcaseprojects",
       "confidence_score": 1.0
     },
     {
@@ -9815,5 +9870,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "13c600dbeb19bdf9d195580ebd536fe3d12c9966"
+  "built_at_commit": "2e094c9415cf55ca160b84b550cca589db09d844"
 }
