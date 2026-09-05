@@ -85,8 +85,8 @@
     "semantic_hash": ""
   },
   "components/blog/about-intro.tsx": {
-    "mtime": 1788629472.5692248,
-    "ast_hash": "a2dc79222c4874a3d010e20782311f03",
+    "mtime": 1788629929.014147,
+    "ast_hash": "f307b86e1d1d00c3938608b8a7f53979",
     "semantic_hash": ""
   },
   "components/blog/ad-banner.tsx": {
@@ -522,6 +522,16 @@
   "public/images/portrait-full.jpg": {
     "mtime": 1788629451.1537163,
     "ast_hash": "96b53386734430a0cb47b8b2ae8d31d6",
+    "semantic_hash": ""
+  },
+  "components/home/certifications-grid.tsx": {
+    "mtime": 1788629904.564804,
+    "ast_hash": "11dc92bd79d3818c4bffc391a81f2403",
+    "semantic_hash": ""
+  },
+  "components/shared/lightbox-modal.tsx": {
+    "mtime": 1788629893.4418838,
+    "ast_hash": "d85f2f45f02a1cb732f13c9524cd85c9",
     "semantic_hash": ""
   }
 }

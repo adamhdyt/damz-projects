@@ -85,8 +85,8 @@
     "semantic_hash": ""
   },
   "components/blog/about-intro.tsx": {
-    "mtime": 1788628865.9682205,
-    "ast_hash": "392df679edbe68b8d7385842f36c10c4",
+    "mtime": 1788629472.5692248,
+    "ast_hash": "a2dc79222c4874a3d010e20782311f03",
     "semantic_hash": ""
   },
   "components/blog/ad-banner.tsx": {
@@ -512,6 +512,16 @@
   "components/home/scroll-showcase.tsx": {
     "mtime": 1788628827.83836,
     "ast_hash": "a142868acb957049e4ab41ae3cbc1c5e",
+    "semantic_hash": ""
+  },
+  "components/home/about-quote-section.tsx": {
+    "mtime": 1788629462.3840303,
+    "ast_hash": "26ae402bae252d8a3b8c0d00d6328427",
+    "semantic_hash": ""
+  },
+  "public/images/portrait-full.jpg": {
+    "mtime": 1788629451.1537163,
+    "ast_hash": "96b53386734430a0cb47b8b2ae8d31d6",
     "semantic_hash": ""
   }
 }

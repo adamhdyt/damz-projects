@@ -1,8 +1,8 @@
-import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Code2, Coffee, MapPin, Database, Shield, Zap, Award, CheckCircle2, ExternalLink, ChevronDown, Briefcase, Building } from "lucide-react"
+import { ArrowRight, Code2, Coffee } from "lucide-react"
 import { ScrollShowcase } from "@/components/home/scroll-showcase"
 import { AboutQuoteSection } from "@/components/home/about-quote-section"
+import { CertificationsGrid } from "@/components/home/certifications-grid"
 
 const highlights = [
   {
@@ -21,66 +21,6 @@ const highlights = [
   },
 ]
 
-const stats = [
-  { value: "4+ Years DBA", icon: Briefcase },
-  { value: "6 Oracle Certs", icon: Award },
-  { value: "Banking Industry", icon: Building },
-]
-
-const competencies = [
-  { icon: Database, label: "Oracle · SQL Server · PostgreSQL · MySQL" },
-  { icon: Zap, label: "Performance Tuning & Optimization" },
-  { icon: Shield, label: "Backup, Recovery & High Availability" },
-]
-
-const certifications = [
-  {
-    title: "Oracle Autonomous Database Cloud 2025 Certified Professional",
-    org: "Oracle",
-    image: "/images/certs/eCertificate_Oracle_Autonomous_Database.jpg",
-  },
-  {
-    title: "Oracle Cloud Database Service Administration 2025 Certified Professional",
-    org: "Oracle",
-    image: "/images/certs/eCertificate_Oracle_Cloud_Database_Service.jpg",
-  },
-  {
-    title: "Oracle Database 19c: Performance Management and Tuning",
-    org: "Oracle",
-    image: "/images/certs/Sertifikat_Oracle_Performance_Management_and_Tuning.jpg",
-  },
-  {
-    title: "Oracle Database 19c Administration Workshop",
-    org: "Oracle",
-    image: "/images/certs/SertifikatOracle_Database19cAdministrationWorkshop.jpg",
-  },
-  {
-    title: "Oracle Database 19c RAC Administration Workshop",
-    org: "Oracle",
-    image: "/images/certs/SertifikatOracle_Database19cRACAdministrationWorkshop.jpg",
-  },
-  {
-    title: "Oracle Database 19c: Backup and Recovery",
-    org: "Oracle",
-    image: "/images/certs/SertifikatBackup19cRecovery.jpg",
-  },
-]
-
-const achievements = [
-  {
-    title: "Production Database Upgrade",
-    description: "Executed a critical upgrade of Oracle Database from 12c to 19c with patch 19.27.",
-  },
-  {
-    title: "Performance Optimization",
-    description: "Identified and re-engineered bottlenecks, cutting processing time by over 99% for batch queries.",
-  },
-  {
-    title: "International Training",
-    description: "Selected to attend intensive DBA training at IBK Headquarters in South Korea.",
-  },
-]
-
 export function AboutIntro() {
   return (
     <main className="flex h-full flex-col">
@@ -90,78 +30,36 @@ export function AboutIntro() {
       {/* Editorial About & Philosophy Quote Showcase */}
       <AboutQuoteSection />
 
-      {/* What you'll find here */}
-      <section className="px-6 py-12 sm:px-10 border-t border-border/80">
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-          What you&apos;ll find here
+      {/* Oracle Certified Expertise with Interactive Lightbox */}
+      <CertificationsGrid />
+
+      {/* What you'll find here preview */}
+      <section className="px-6 py-16 sm:px-10 max-w-7xl mx-auto w-full border-t border-border/80">
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          Content Pillars
         </h2>
-        <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {highlights.map(({ icon: Icon, title, description, href }) => (
             <Link
               key={title}
               href={href}
-              className="group flex items-start gap-4 rounded-xl border border-border bg-card p-4 text-left transition-colors hover:border-primary/50 hover:bg-accent"
+              className="group flex items-start gap-4 rounded-2xl border border-border/80 bg-card/70 backdrop-blur-sm p-6 text-left transition-all duration-200 hover:border-primary/50 hover:bg-accent hover:shadow-md"
             >
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                <Icon className="size-4" />
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <Icon className="size-5" />
               </span>
               <div className="flex flex-col">
-                <h3 className="text-sm font-semibold text-foreground">{title}</h3>
-                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                <h3 className="text-base font-semibold text-foreground">{title}</h3>
+                <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
                   {description}
                 </p>
-                <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-primary">
+                <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-primary">
                   Browse posts
-                  <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
+                  <ArrowRight className="size-3 transition-transform group-hover:translate-x-1" />
                 </span>
               </div>
             </Link>
           ))}
-        </div>
-
-        {/* Certifications (Accordion placeholder until Ticket 05) */}
-        <div id="certifications" className="mt-8">
-          <details className="group rounded-xl border border-border bg-card shadow-sm open:pb-4">
-            <summary className="flex cursor-pointer items-start gap-4 p-4 marker:content-none hover:bg-accent/50 rounded-xl transition-colors">
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                <Award className="size-4" />
-              </span>
-              <div className="flex flex-col">
-                <h3 className="text-sm font-semibold text-foreground">Certifications</h3>
-                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                  Official credentials from Oracle University.
-                </p>
-                <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-primary">
-                  View credentials
-                  <ChevronDown className="size-3 transition-transform duration-200 group-open:rotate-180" />
-                </span>
-              </div>
-            </summary>
-            <div className="border-t border-border px-6 pt-6">
-              <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {certifications.map((cert) => (
-                  <li key={cert.title} className="group flex flex-col gap-1 rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/50 hover:bg-accent">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex flex-col gap-1">
-                        <span className="text-sm font-medium text-foreground">{cert.title}</span>
-                        <span className="text-xs text-muted-foreground">{cert.org}</span>
-                      </div>
-                      <a
-                        href={cert.image}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="shrink-0 rounded-full bg-primary/10 p-2 text-primary opacity-0 transition-all group-hover:opacity-100 focus:opacity-100 hover:bg-primary/20"
-                        aria-label={`View ${cert.title} certificate`}
-                        title="View Certificate"
-                      >
-                        <ExternalLink className="size-4" />
-                      </a>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </details>
         </div>
       </section>
     </main>
