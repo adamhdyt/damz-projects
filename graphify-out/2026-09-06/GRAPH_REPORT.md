@@ -1,16 +1,16 @@
-# Graph Report - damz-projects  (2026-09-05)
+# Graph Report - damz-projects  (2026-09-06)
 
 ## Corpus Check
-- 70 files · ~687,273 words
+- 74 files · ~690,519 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 361 nodes · 431 edges · 38 communities (22 shown, 16 thin omitted)
+- 397 nodes · 471 edges · 40 communities (24 shown, 16 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 3 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f644e66e`
+- Built from commit: `b5cb9901`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -50,6 +50,8 @@
 - graphify reference: extraction subagent prompt
 - next-env.d.ts
 - postcss.config.mjs
+- 2.2 User Stories & Acceptance Criteria
+- floating-pill-nav.tsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `cn()` - 25 edges
@@ -57,9 +59,9 @@
 3. `getAllPosts()` - 13 edges
 4. `What You Must Do When Invoked` - 12 edges
 5. `/graphify` - 11 edges
-6. `Product Requirements Document (PRD)` - 8 edges
-7. `graphify reference: extra exports and benchmark` - 8 edges
-8. `Sidebar()` - 7 edges
+6. `2.2 User Stories & Acceptance Criteria` - 9 edges
+7. `Product Requirements Document (PRD)` - 8 edges
+8. `graphify reference: extra exports and benchmark` - 8 edges
 9. `getPostBySlug()` - 7 edges
 10. `tailwind` - 6 edges
 
@@ -78,19 +80,19 @@
 ## Import Cycles
 - None detected.
 
-## Communities (38 total, 16 thin omitted)
+## Communities (40 total, 16 thin omitted)
 
 ### Community 0 - "cn"
-Cohesion: 0.10
-Nodes (24): AdBanner(), AdBannerProps, AffiliateDisclosure(), BlogLayoutClient(), CodeBlock(), CopyButton(), getActiveSection(), items (+16 more)
+Cohesion: 0.09
+Nodes (23): AdBanner(), AdBannerProps, AffiliateDisclosure(), CodeBlock(), CopyButton(), getActiveSection(), items, MobileNav() (+15 more)
 
 ### Community 1 - "dependencies"
 Cohesion: 0.05
 Nodes (41): @base-ui/react, class-variance-authority, clsx, framer-motion, @giscus/react, gray-matter, lucide-react, next (+33 more)
 
 ### Community 2 - "post-detail.tsx"
-Cohesion: 0.10
-Nodes (27): LifePage(), metadata, generateMetadata(), generateStaticParams(), LifeArticlePage(), metadata, TechPage(), generateMetadata() (+19 more)
+Cohesion: 0.11
+Nodes (26): LifePage(), metadata, generateMetadata(), generateStaticParams(), LifeArticlePage(), metadata, TechPage(), generateMetadata() (+18 more)
 
 ### Community 3 - "compilerOptions"
 Cohesion: 0.07
@@ -156,25 +158,33 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 Cohesion: 0.50
 Nodes (3): __dirname, __filename, nextConfig
 
+### Community 38 - "2.2 User Stories & Acceptance Criteria"
+Cohesion: 0.07
+Nodes (26): 1.1 Problem Statement, 1.2 Proposed Solution, 1.3 Success Criteria, 1. Executive Summary, 2.1 User Personas, 2.2 User Stories & Acceptance Criteria, 2.3 Non-Goals (Out of Scope), 2. User Experience & Functionality (+18 more)
+
+### Community 39 - "floating-pill-nav.tsx"
+Cohesion: 0.24
+Nodes (8): BlogLayoutClient(), ScrollToTop(), FloatingPillNav(), navLinks, Footer(), GitHubIcon(), InstagramIcon(), LinkedInIcon()
+
 ## Knowledge Gaps
-- **179 isolated node(s):** `metadata`, `metadata`, `metadata`, `metadata`, `metadata` (+174 more)
+- **200 isolated node(s):** `metadata`, `metadata`, `metadata`, `metadata`, `metadata` (+195 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
+- **Why does `cn()` connect `cn` to `post-detail.tsx`, `floating-pill-nav.tsx`?**
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `dependencies` to `devDependencies`?**
-  _High betweenness centrality (0.027) - this node is a cross-community bridge._
-- **Why does `cn()` connect `cn` to `post-detail.tsx`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **What connects `metadata`, `metadata`, `metadata` to the rest of the system?**
-  _179 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _200 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `cn` be split into smaller, more focused modules?**
-  _Cohesion score 0.09523809523809523 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09487179487179487 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.04878048780487805 - nodes in this community are weakly interconnected._
 - **Should `post-detail.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.09634551495016612 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1106612685560054 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
   _Cohesion score 0.07142857142857142 - nodes in this community are weakly interconnected._

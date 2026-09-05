@@ -85,8 +85,8 @@
     "semantic_hash": ""
   },
   "components/blog/about-intro.tsx": {
-    "mtime": 1788625958.5650563,
-    "ast_hash": "97246cb5dfdf6dd9eee4a9bc228a06e3",
+    "mtime": 1788628485.04567,
+    "ast_hash": "7f90169254cd3572fcb62e7c66bd7cc1",
     "semantic_hash": ""
   },
   "components/blog/ad-banner.tsx": {
@@ -215,8 +215,8 @@
     "semantic_hash": ""
   },
   "next-env.d.ts": {
-    "mtime": 1788628102.8535953,
-    "ast_hash": "d0f8375ae1199dc7acd3977fc33b78b8",
+    "mtime": 1788628497.1071298,
+    "ast_hash": "2a74d3909800ca5467fa83b0ab4a4890",
     "semantic_hash": ""
   },
   "next.config.mjs": {
@@ -502,6 +502,11 @@
   "PRD.md": {
     "mtime": 1788627502.2589164,
     "ast_hash": "42ee914392f745ffe6d3a97bf906e9b7",
+    "semantic_hash": ""
+  },
+  "components/home/hero-section.tsx": {
+    "mtime": 1788628420.998276,
+    "ast_hash": "9974f2507c85ff7a8433fca7e1f6714e",
     "semantic_hash": ""
   }
 }

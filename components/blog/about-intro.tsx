@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Code2, Coffee, MapPin, Database, Shield, Zap, Award, CheckCircle2, ExternalLink, ChevronDown, Briefcase, Building } from "lucide-react"
+import { HeroSection } from "@/components/home/hero-section"
 
 const highlights = [
   {
@@ -82,87 +83,8 @@ const achievements = [
 export function AboutIntro() {
   return (
     <main className="flex h-full flex-col">
-      {/* Hero */}
-      <section className="border-b border-border px-6 py-12 sm:px-10 lg:py-16">
-        <div className="flex flex-col items-start gap-10 lg:flex-row lg:items-center">
-          <div className="relative shrink-0">
-            <div className="absolute -inset-3 rounded-full bg-primary/10 blur-2xl" aria-hidden />
-            <Image
-              src="/images/portrait.png"
-              alt="Adam Hidayat - Database Administrator"
-              width={200}
-              height={200}
-              priority
-              className="relative size-40 rounded-full object-cover ring-1 ring-border sm:size-48"
-            />
-          </div>
-
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
-              <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden />
-              Open to opportunities
-            </span>
-            <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground text-balance sm:text-4xl lg:text-5xl">
-              Hi, I&apos;m Adam Hidayat - Database Administrator.
-            </h1>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg text-pretty">
-              I specialize in managing and optimizing enterprise databases to ensure
-              seamless performance, robust security, and high availability. With 4+ years
-              of experience across Oracle, SQL Server, MySQL, and PostgreSQL - currently
-              working in the banking industry.
-            </p>
-            <div className="mt-5 flex items-center gap-1.5 text-sm text-muted-foreground">
-              <MapPin className="size-4" />
-              <span>Based in Bekasi, West Java, Indonesia</span>
-            </div>
-
-            {/* Call to Action Buttons */}
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <a
-                href="/CV/Adam_Hidayat_DBA_CV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                download="Adam_Hidayat_DBA_CV.pdf"
-                className="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                Download CV
-              </a>
-              <a
-                href="mailto:adamhdyt11@gmail.com"
-                className="inline-flex h-10 items-center justify-center rounded-lg border border-border bg-card px-6 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                Email Me
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Quick Facts & Competencies */}
-        <div className="mt-8 flex flex-col gap-3">
-          <div className="flex flex-wrap gap-2">
-            {stats.map(({ value, icon: Icon }) => (
-              <div
-                key={value}
-                className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2"
-              >
-                <Icon className="size-3.5 text-primary" />
-                <span className="text-xs font-medium text-muted-foreground">{value}</span>
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {competencies.map(({ icon: Icon, label }) => (
-              <div
-                key={label}
-                className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2"
-              >
-                <Icon className="size-3.5 text-primary" />
-                <span className="text-xs font-medium text-muted-foreground">{label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* New Creative Portfolio Hero Section */}
+      <HeroSection />
 
       {/* What you'll find here */}
       <section className="px-6 py-12 sm:px-10">
