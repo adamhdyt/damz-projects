@@ -1,16 +1,16 @@
 # Graph Report - damz-projects  (2026-09-06)
 
 ## Corpus Check
-- 76 files · ~692,864 words
+- 77 files · ~918,884 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 403 nodes · 477 edges · 41 communities (24 shown, 17 thin omitted)
+- 406 nodes · 485 edges · 41 communities (24 shown, 17 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 3 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2e094c94`
+- Built from commit: `96ce5b0a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -84,15 +84,15 @@
 ## Communities (41 total, 17 thin omitted)
 
 ### Community 0 - "cn"
-Cohesion: 0.11
-Nodes (23): AdBanner(), AdBannerProps, AffiliateDisclosure(), getActiveSection(), items, MobileNav(), PostCard(), PostListWithSearch() (+15 more)
+Cohesion: 0.09
+Nodes (23): AdBanner(), AdBannerProps, AffiliateDisclosure(), CodeBlock(), CopyButton(), getActiveSection(), items, MobileNav() (+15 more)
 
 ### Community 1 - "dependencies"
 Cohesion: 0.05
 Nodes (41): @base-ui/react, class-variance-authority, clsx, framer-motion, @giscus/react, gray-matter, lucide-react, next (+33 more)
 
 ### Community 2 - "post-detail.tsx"
-Cohesion: 0.09
+Cohesion: 0.11
 Nodes (26): LifePage(), metadata, generateMetadata(), generateStaticParams(), LifeArticlePage(), metadata, TechPage(), generateMetadata() (+18 more)
 
 ### Community 3 - "compilerOptions"
@@ -120,8 +120,8 @@ Cohesion: 0.15
 Nodes (12): 1. Gather context, 2. Explore the codebase (optional), 3. Draft vertical slices, 4. Quiz the user, 5. Publish the tickets to the configured tracker, Acceptance criteria, Blocked by, <NN> — <Ticket title> (+4 more)
 
 ### Community 9 - "about-intro.tsx"
-Cohesion: 0.18
-Nodes (9): metadata, AboutIntro(), achievements, certifications, competencies, highlights, stats, ScrollShowcase() (+1 more)
+Cohesion: 0.16
+Nodes (10): metadata, AboutIntro(), achievements, certifications, competencies, highlights, stats, AboutQuoteSection() (+2 more)
 
 ### Community 10 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -164,28 +164,28 @@ Cohesion: 0.07
 Nodes (26): 1.1 Problem Statement, 1.2 Proposed Solution, 1.3 Success Criteria, 1. Executive Summary, 2.1 User Personas, 2.2 User Stories & Acceptance Criteria, 2.3 Non-Goals (Out of Scope), 2. User Experience & Functionality (+18 more)
 
 ### Community 39 - "floating-pill-nav.tsx"
-Cohesion: 0.24
-Nodes (8): BlogLayoutClient(), ScrollToTop(), FloatingPillNav(), navLinks, Footer(), GitHubIcon(), InstagramIcon(), LinkedInIcon()
+Cohesion: 0.22
+Nodes (9): BlogLayoutClient(), ScrollToTop(), socialLinks, FloatingPillNav(), navLinks, Footer(), GitHubIcon(), InstagramIcon() (+1 more)
 
 ## Knowledge Gaps
-- **202 isolated node(s):** `metadata`, `metadata`, `metadata`, `metadata`, `metadata` (+197 more)
+- **203 isolated node(s):** `metadata`, `metadata`, `metadata`, `metadata`, `metadata` (+198 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **17 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `cn()` connect `cn` to `floating-pill-nav.tsx`?**
-  _High betweenness centrality (0.027) - this node is a cross-community bridge._
+- **Why does `cn()` connect `cn` to `post-detail.tsx`, `floating-pill-nav.tsx`?**
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `dependencies` to `devDependencies`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **What connects `metadata`, `metadata`, `metadata` to the rest of the system?**
-  _202 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _203 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `cn` be split into smaller, more focused modules?**
-  _Cohesion score 0.10810810810810811 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09487179487179487 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.04878048780487805 - nodes in this community are weakly interconnected._
 - **Should `post-detail.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.09291521486643438 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1106612685560054 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
   _Cohesion score 0.07142857142857142 - nodes in this community are weakly interconnected._

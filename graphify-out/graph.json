@@ -700,7 +700,7 @@
       "label": "highlights",
       "file_type": "code",
       "source_file": "components/blog/about-intro.tsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "_origin": "ast",
       "id": "components_blog_about_intro_highlights",
       "community": 9,
@@ -711,7 +711,7 @@
       "label": "stats",
       "file_type": "code",
       "source_file": "components/blog/about-intro.tsx",
-      "source_location": "L23",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "components_blog_about_intro_stats",
       "community": 9,
@@ -722,7 +722,7 @@
       "label": "competencies",
       "file_type": "code",
       "source_file": "components/blog/about-intro.tsx",
-      "source_location": "L29",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "components_blog_about_intro_competencies",
       "community": 9,
@@ -733,7 +733,7 @@
       "label": "certifications",
       "file_type": "code",
       "source_file": "components/blog/about-intro.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "components_blog_about_intro_certifications",
       "community": 9,
@@ -744,7 +744,7 @@
       "label": "achievements",
       "file_type": "code",
       "source_file": "components/blog/about-intro.tsx",
-      "source_location": "L68",
+      "source_location": "L69",
       "_origin": "ast",
       "id": "components_blog_about_intro_achievements",
       "community": 9,
@@ -755,7 +755,7 @@
       "label": "AboutIntro()",
       "file_type": "code",
       "source_file": "components/blog/about-intro.tsx",
-      "source_location": "L83",
+      "source_location": "L84",
       "_origin": "ast",
       "id": "components_blog_about_intro_aboutintro",
       "community": 9,
@@ -846,8 +846,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_blog_code_block",
-      "community": 2,
-      "community_name": "post-detail.tsx",
+      "community": 0,
+      "community_name": "cn",
       "norm_label": "code-block.tsx"
     },
     {
@@ -857,8 +857,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "components_blog_code_block_codeblock",
-      "community": 2,
-      "community_name": "post-detail.tsx",
+      "community": 0,
+      "community_name": "cn",
       "norm_label": "codeblock()"
     },
     {
@@ -890,8 +890,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_blog_copy_button",
-      "community": 2,
-      "community_name": "post-detail.tsx",
+      "community": 0,
+      "community_name": "cn",
       "norm_label": "copy-button.tsx"
     },
     {
@@ -901,8 +901,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_blog_copy_button_copybutton",
-      "community": 2,
-      "community_name": "post-detail.tsx",
+      "community": 0,
+      "community_name": "cn",
       "norm_label": "copybutton()"
     },
     {
@@ -1011,8 +1011,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_blog_post_card",
-      "community": 0,
-      "community_name": "cn",
+      "community": 2,
+      "community_name": "post-detail.tsx",
       "norm_label": "post-card.tsx"
     },
     {
@@ -1022,8 +1022,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "components_blog_post_card_postcard",
-      "community": 0,
-      "community_name": "cn",
+      "community": 2,
+      "community_name": "post-detail.tsx",
       "norm_label": "postcard()"
     },
     {
@@ -1055,8 +1055,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_blog_post_list_with_search",
-      "community": 0,
-      "community_name": "cn",
+      "community": 2,
+      "community_name": "post-detail.tsx",
       "norm_label": "post-list-with-search.tsx"
     },
     {
@@ -1066,8 +1066,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "components_blog_post_list_with_search_postlistwithsearch",
-      "community": 0,
-      "community_name": "cn",
+      "community": 2,
+      "community_name": "post-detail.tsx",
       "norm_label": "postlistwithsearch()"
     },
     {
@@ -1346,6 +1346,39 @@
       "norm_label": "themetoggle()"
     },
     {
+      "label": "about-quote-section.tsx",
+      "file_type": "code",
+      "source_file": "components/home/about-quote-section.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_home_about_quote_section",
+      "community": 39,
+      "community_name": "floating-pill-nav.tsx",
+      "norm_label": "about-quote-section.tsx"
+    },
+    {
+      "label": "socialLinks",
+      "file_type": "code",
+      "source_file": "components/home/about-quote-section.tsx",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "components_home_about_quote_section_sociallinks",
+      "community": 39,
+      "community_name": "floating-pill-nav.tsx",
+      "norm_label": "sociallinks"
+    },
+    {
+      "label": "AboutQuoteSection()",
+      "file_type": "code",
+      "source_file": "components/home/about-quote-section.tsx",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "components_home_about_quote_section_aboutquotesection",
+      "community": 9,
+      "community_name": "about-intro.tsx",
+      "norm_label": "aboutquotesection()"
+    },
+    {
       "label": "hero-section.tsx",
       "file_type": "code",
       "source_file": "components/home/hero-section.tsx",
@@ -1418,8 +1451,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_mdx_mdx_components",
-      "community": 2,
-      "community_name": "post-detail.tsx",
+      "community": 0,
+      "community_name": "cn",
       "norm_label": "mdx-components.tsx"
     },
     {
@@ -1429,8 +1462,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "components_mdx_mdx_components_extracttext",
-      "community": 2,
-      "community_name": "post-detail.tsx",
+      "community": 0,
+      "community_name": "cn",
       "norm_label": "extracttext()"
     },
     {
@@ -1440,8 +1473,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "components_mdx_mdx_components_slugify",
-      "community": 2,
-      "community_name": "post-detail.tsx",
+      "community": 0,
+      "community_name": "cn",
       "norm_label": "slugify()"
     },
     {
@@ -5451,7 +5484,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/blog/about-intro.tsx",
-      "source_location": "L83",
+      "source_location": "L84",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_blog_about_intro",
@@ -5462,7 +5495,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/blog/about-intro.tsx",
-      "source_location": "L68",
+      "source_location": "L69",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_blog_about_intro",
@@ -5473,7 +5506,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/blog/about-intro.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_blog_about_intro",
@@ -5484,7 +5517,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/blog/about-intro.tsx",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_blog_about_intro",
@@ -5495,7 +5528,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/blog/about-intro.tsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_blog_about_intro",
@@ -5506,11 +5539,35 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/blog/about-intro.tsx",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_blog_about_intro",
       "target": "components_blog_about_intro_stats",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/blog/about-intro.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_blog_about_intro",
+      "target": "components_home_about_quote_section",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/blog/about-intro.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_blog_about_intro",
+      "target": "components_home_about_quote_section_aboutquotesection",
       "confidence_score": 1.0
     },
     {
@@ -6967,6 +7024,76 @@
       "_origin": "ast",
       "source": "components_blog_theme_toggle_themetoggle",
       "target": "lib_utils_cn"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/home/about-quote-section.tsx",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_home_about_quote_section",
+      "target": "components_home_about_quote_section_aboutquotesection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/home/about-quote-section.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_home_about_quote_section",
+      "target": "components_home_about_quote_section_sociallinks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/home/about-quote-section.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_home_about_quote_section",
+      "target": "components_ui_icons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/home/about-quote-section.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_home_about_quote_section",
+      "target": "components_ui_icons_githubicon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/home/about-quote-section.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_home_about_quote_section",
+      "target": "components_ui_icons_instagramicon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/home/about-quote-section.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_home_about_quote_section",
+      "target": "components_ui_icons_linkedinicon",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -9870,5 +9997,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "2e094c9415cf55ca160b84b550cca589db09d844"
+  "built_at_commit": "96ce5b0a4cd001e3e1fbba69043b0229749f66c1"
 }

@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Code2, Coffee, MapPin, Database, Shield, Zap, Award, CheckCircle2, ExternalLink, ChevronDown, Briefcase, Building } from "lucide-react"
 import { ScrollShowcase } from "@/components/home/scroll-showcase"
+import { AboutQuoteSection } from "@/components/home/about-quote-section"
 
 const highlights = [
   {
@@ -85,6 +86,9 @@ export function AboutIntro() {
     <main className="flex h-full flex-col">
       {/* Signature Scroll-Linked Hero & Selected Work Showcase */}
       <ScrollShowcase />
+
+      {/* Editorial About & Philosophy Quote Showcase */}
+      <AboutQuoteSection />
 
       {/* What you'll find here */}
       <section className="px-6 py-12 sm:px-10 border-t border-border/80">
