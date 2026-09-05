@@ -1,16 +1,16 @@
 # Graph Report - damz-projects  (2026-09-06)
 
 ## Corpus Check
-- 81 files · ~922,197 words
+- 81 files · ~922,284 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 416 nodes · 523 edges · 38 communities (23 shown, 15 thin omitted)
+- 418 nodes · 525 edges · 37 communities (22 shown, 15 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 3 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7e114ef4`
+- Built from commit: `96309810`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -24,7 +24,6 @@
 - devDependencies
 - components.json
 - Process
-- about-intro.tsx
 - graphify reference: extra exports and benchmark
 - app/layout.tsx
 - graphify reference: query, path, explain
@@ -64,8 +63,6 @@
 10. `GitHubIcon()` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `ContentPillarsProps` --references--> `Post`  [EXTRACTED]
-  components/home/content-pillars.tsx → lib/mdx.ts
 - `generateStaticParams()` --calls--> `getAllPosts()`  [EXTRACTED]
   app/(blog)/life/[slug]/page.tsx → lib/mdx.ts
 - `generateMetadata()` --calls--> `getPostBySlug()`  [EXTRACTED]
@@ -74,23 +71,25 @@
   app/(blog)/life/[slug]/page.tsx → lib/mdx.ts
 - `LifePage()` --calls--> `getAllPosts()`  [EXTRACTED]
   app/(blog)/life/page.tsx → lib/mdx.ts
+- `generateStaticParams()` --calls--> `getAllPosts()`  [EXTRACTED]
+  app/(blog)/tech/[slug]/page.tsx → lib/mdx.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (38 total, 15 thin omitted)
+## Communities (37 total, 15 thin omitted)
 
 ### Community 0 - "cn"
-Cohesion: 0.08
-Nodes (30): AdBanner(), AdBannerProps, AffiliateDisclosure(), CodeBlock(), Comments(), CopyButton(), getActiveSection(), items (+22 more)
+Cohesion: 0.11
+Nodes (22): AdBanner(), AdBannerProps, AffiliateDisclosure(), CodeBlock(), CopyButton(), getActiveSection(), items, MobileNav() (+14 more)
 
 ### Community 1 - "dependencies"
 Cohesion: 0.05
 Nodes (41): @base-ui/react, class-variance-authority, clsx, framer-motion, @giscus/react, gray-matter, lucide-react, next (+33 more)
 
 ### Community 2 - "post-detail.tsx"
-Cohesion: 0.14
-Nodes (20): LifePage(), metadata, generateMetadata(), generateStaticParams(), LifeArticlePage(), metadata, TechPage(), generateMetadata() (+12 more)
+Cohesion: 0.09
+Nodes (29): LifePage(), metadata, generateMetadata(), generateStaticParams(), LifeArticlePage(), metadata, TechPage(), generateMetadata() (+21 more)
 
 ### Community 3 - "compilerOptions"
 Cohesion: 0.07
@@ -115,10 +114,6 @@ Nodes (17): aliases, components, hooks, lib, ui, utils, iconLibrary, rsc (+9 mor
 ### Community 8 - "Process"
 Cohesion: 0.15
 Nodes (12): 1. Gather context, 2. Explore the codebase (optional), 3. Draft vertical slices, 4. Quiz the user, 5. Publish the tickets to the configured tracker, Acceptance criteria, Blocked by, <NN> — <Ticket title> (+4 more)
-
-### Community 9 - "about-intro.tsx"
-Cohesion: 0.14
-Nodes (12): metadata, AboutIntro(), AboutQuoteSection(), CERTIFICATIONS_DATA, CertificationsGrid(), ContentPillars(), ContentPillarsProps, ScrollShowcase() (+4 more)
 
 ### Community 10 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -157,8 +152,8 @@ Cohesion: 0.07
 Nodes (26): 1.1 Problem Statement, 1.2 Proposed Solution, 1.3 Success Criteria, 1. Executive Summary, 2.1 User Personas, 2.2 User Stories & Acceptance Criteria, 2.3 Non-Goals (Out of Scope), 2. User Experience & Functionality (+18 more)
 
 ### Community 39 - "floating-pill-nav.tsx"
-Cohesion: 0.12
-Nodes (18): subscribe(), subscribeSchema, competencies, experience, metadata, directChannels, metadata, BlogLayoutClient() (+10 more)
+Cohesion: 0.07
+Nodes (29): subscribe(), subscribeSchema, competencies, experience, metadata, directChannels, metadata, metadata (+21 more)
 
 ## Knowledge Gaps
 - **203 isolated node(s):** `metadata`, `experience`, `competencies`, `metadata`, `directChannels` (+198 more)
@@ -168,17 +163,17 @@ Nodes (18): subscribe(), subscribeSchema, competencies, experience, metadata, di
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `cn()` connect `cn` to `floating-pill-nav.tsx`?**
+- **Why does `cn()` connect `cn` to `post-detail.tsx`, `floating-pill-nav.tsx`?**
   _High betweenness centrality (0.029) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `dependencies` to `devDependencies`?**
   _High betweenness centrality (0.020) - this node is a cross-community bridge._
-- **Why does `getAllPosts()` connect `post-detail.tsx` to `cn`, `about-intro.tsx`?**
+- **Why does `getAllPosts()` connect `post-detail.tsx` to `floating-pill-nav.tsx`?**
   _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **What connects `metadata`, `experience`, `competencies` to the rest of the system?**
   _203 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `cn` be split into smaller, more focused modules?**
-  _Cohesion score 0.07547169811320754 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10793650793650794 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.04878048780487805 - nodes in this community are weakly interconnected._
 - **Should `post-detail.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.14245014245014245 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08888888888888889 - nodes in this community are weakly interconnected._

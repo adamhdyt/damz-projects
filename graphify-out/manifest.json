@@ -85,8 +85,8 @@
     "semantic_hash": ""
   },
   "components/blog/about-intro.tsx": {
-    "mtime": 1788630364.3020403,
-    "ast_hash": "a90d7e4e933f7d5616ad9a466bde6e04",
+    "mtime": 1788631625.3264031,
+    "ast_hash": "663beecb07a9baebd032dce8f27e8a9f",
     "semantic_hash": ""
   },
   "components/blog/ad-banner.tsx": {
@@ -509,11 +509,6 @@
     "ast_hash": "9974f2507c85ff7a8433fca7e1f6714e",
     "semantic_hash": ""
   },
-  "components/home/scroll-showcase.tsx": {
-    "mtime": 1788631357.6925967,
-    "ast_hash": "09c7acc7e617b7c1ccf340a9f999364e",
-    "semantic_hash": ""
-  },
   "components/home/about-quote-section.tsx": {
     "mtime": 1788629462.3840303,
     "ast_hash": "26ae402bae252d8a3b8c0d00d6328427",
@@ -542,6 +537,11 @@
   "components/home/contact-newsletter-section.tsx": {
     "mtime": 1788630355.846971,
     "ast_hash": "49486d725391357dd920399c3f604fb6",
+    "semantic_hash": ""
+  },
+  "components/home/selected-work-section.tsx": {
+    "mtime": 1788631611.626503,
+    "ast_hash": "794c19aed0229d0fe752705d2c302fd6",
     "semantic_hash": ""
   }
 }
