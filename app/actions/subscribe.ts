@@ -15,7 +15,7 @@ export async function subscribe(formData: FormData) {
   })
 
   if (!result.success) {
-    return { error: result.error.errors[0].message }
+    return { error: result.error.issues[0]?.message ?? "Invalid input" }
   }
 
   const { email } = result.data

@@ -19,7 +19,7 @@ export function PostListWithSearch({
 
   // Extract all unique tags across these posts
   const allTags = Array.from(
-    new Set(posts.flatMap((post) => post.tags || []))
+    new Set(posts.map((post) => post.tag).filter(Boolean))
   ).sort()
 
   // Handle keyboard shortcut '/'
@@ -50,16 +50,16 @@ export function PostListWithSearch({
   // Filter posts
   const filteredPosts = posts.filter((post) => {
     const searchString = `${post.title} ${post.excerpt || ""} ${
-      post.tags?.join(" ") || ""
+      post.tag || ""
     }`.toLowerCase()
     
     const matchesQuery = !query || searchString.includes(query.toLowerCase())
     
     // If activeTags is empty, matchesTags is true.
-    // Otherwise, post must have ALL active tags (AND logic).
+    // Otherwise, post's tag must match one of the activeTags.
     const matchesTags =
       activeTags.length === 0 ||
-      activeTags.every((tag) => post.tags?.includes(tag))
+      activeTags.includes(post.tag)
 
     return matchesQuery && matchesTags
   })
