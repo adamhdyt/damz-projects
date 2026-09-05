@@ -100,8 +100,8 @@
     "semantic_hash": ""
   },
   "components/blog/blog-layout-client.tsx": {
-    "mtime": 1788627972.2280154,
-    "ast_hash": "a1e2bca95596198f25822cddc0ec2eb8",
+    "mtime": 1788625958.565193,
+    "ast_hash": "cbd43820dea514f8c8f94c036928577e",
     "semantic_hash": ""
   },
   "components/blog/code-block.tsx": {
@@ -165,8 +165,8 @@
     "semantic_hash": ""
   },
   "components/blog/scroll-to-top.tsx": {
-    "mtime": 1788627961.0813165,
-    "ast_hash": "e204af76985ee1b28408b318fea51d8f",
+    "mtime": 1788625958.565904,
+    "ast_hash": "43d712d9e3c0258ce907eb4596b8ee38",
     "semantic_hash": ""
   },
   "components/blog/share-buttons.tsx": {
@@ -215,8 +215,8 @@
     "semantic_hash": ""
   },
   "next-env.d.ts": {
-    "mtime": 1788628102.8535953,
-    "ast_hash": "d0f8375ae1199dc7acd3977fc33b78b8",
+    "mtime": 1788626122.4662793,
+    "ast_hash": "2a74d3909800ca5467fa83b0ab4a4890",
     "semantic_hash": ""
   },
   "next.config.mjs": {
@@ -482,26 +482,6 @@
   "public/placeholder.svg": {
     "mtime": 1788625959.385466,
     "ast_hash": "35707bd9960ba5281c72af927b79291f",
-    "semantic_hash": ""
-  },
-  "components/navigation/floating-pill-nav.tsx": {
-    "mtime": 1788628064.4474242,
-    "ast_hash": "5ac45943d8a7a6110bcb57966cc32445",
-    "semantic_hash": ""
-  },
-  "components/navigation/footer.tsx": {
-    "mtime": 1788628073.6828861,
-    "ast_hash": "b2766ecf04728077ee1fc69e987410a4",
-    "semantic_hash": ""
-  },
-  "components/ui/icons.tsx": {
-    "mtime": 1788628002.9403908,
-    "ast_hash": "fd2c01b6f5d8faf57d707b36393e2013",
-    "semantic_hash": ""
-  },
-  "PRD.md": {
-    "mtime": 1788627502.2589164,
-    "ast_hash": "42ee914392f745ffe6d3a97bf906e9b7",
     "semantic_hash": ""
   }
 }
