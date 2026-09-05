@@ -85,8 +85,8 @@
     "semantic_hash": ""
   },
   "components/blog/about-intro.tsx": {
-    "mtime": 1788629929.014147,
-    "ast_hash": "f307b86e1d1d00c3938608b8a7f53979",
+    "mtime": 1788630180.4892306,
+    "ast_hash": "372124e8890b07e5bcb90ff454dbf485",
     "semantic_hash": ""
   },
   "components/blog/ad-banner.tsx": {
@@ -532,6 +532,11 @@
   "components/shared/lightbox-modal.tsx": {
     "mtime": 1788629893.4418838,
     "ast_hash": "d85f2f45f02a1cb732f13c9524cd85c9",
+    "semantic_hash": ""
+  },
+  "components/home/content-pillars.tsx": {
+    "mtime": 1788630172.3711917,
+    "ast_hash": "d2d9ab45753d49c2393ee02e34933c96",
     "semantic_hash": ""
   }
 }

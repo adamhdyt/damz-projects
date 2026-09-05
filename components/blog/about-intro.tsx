@@ -2,6 +2,7 @@ import { ScrollShowcase } from "@/components/home/scroll-showcase"
 import { AboutQuoteSection } from "@/components/home/about-quote-section"
 import { CertificationsGrid } from "@/components/home/certifications-grid"
 import { ContentPillars } from "@/components/home/content-pillars"
+import { ContactNewsletterSection } from "@/components/home/contact-newsletter-section"
 import { getAllPosts } from "@/lib/mdx"
 
 export function AboutIntro() {
@@ -21,6 +22,9 @@ export function AboutIntro() {
 
       {/* Dynamic Content Pillars: Tech Notes & Life Showcase */}
       <ContentPillars techPosts={techPosts} lifePosts={lifePosts} />
+
+      {/* Direct Contact & Newsletter Subscription Section */}
+      <ContactNewsletterSection />
     </main>
   )
 }

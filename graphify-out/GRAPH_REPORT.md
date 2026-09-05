@@ -1,16 +1,16 @@
 # Graph Report - damz-projects  (2026-09-06)
 
 ## Corpus Check
-- 80 files · ~920,397 words
+- 81 files · ~922,197 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 411 nodes · 500 edges · 41 communities (24 shown, 17 thin omitted)
+- 416 nodes · 523 edges · 38 communities (23 shown, 15 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 3 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b246f804`
+- Built from commit: `7e114ef4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -27,15 +27,12 @@
 - about-intro.tsx
 - graphify reference: extra exports and benchmark
 - app/layout.tsx
-- subscribe.ts
 - graphify reference: query, path, explain
 - mountain-journal.mdx
 - graphify reference: add a URL and watch a folder
 - graphify reference: commit hook and native CLAUDE.md integration
 - graphify reference: incremental update and cluster-only
 - next.config.mjs
-- about/page.tsx
-- contact/page.tsx
 - privacy-policy/page.tsx
 - graphify reference: GitHub clone and cross-repo merge
 - graphify reference: transcribe video and audio
@@ -64,7 +61,7 @@
 7. `Post` - 8 edges
 8. `Product Requirements Document (PRD)` - 8 edges
 9. `graphify reference: extra exports and benchmark` - 8 edges
-10. `getPostBySlug()` - 7 edges
+10. `GitHubIcon()` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `ContentPillarsProps` --references--> `Post`  [EXTRACTED]
@@ -81,19 +78,19 @@
 ## Import Cycles
 - None detected.
 
-## Communities (41 total, 17 thin omitted)
+## Communities (38 total, 15 thin omitted)
 
 ### Community 0 - "cn"
-Cohesion: 0.09
-Nodes (25): AdBanner(), AdBannerProps, AffiliateDisclosure(), CodeBlock(), CopyButton(), getActiveSection(), items, MobileNav() (+17 more)
+Cohesion: 0.08
+Nodes (30): AdBanner(), AdBannerProps, AffiliateDisclosure(), CodeBlock(), Comments(), CopyButton(), getActiveSection(), items (+22 more)
 
 ### Community 1 - "dependencies"
 Cohesion: 0.05
 Nodes (41): @base-ui/react, class-variance-authority, clsx, framer-motion, @giscus/react, gray-matter, lucide-react, next (+33 more)
 
 ### Community 2 - "post-detail.tsx"
-Cohesion: 0.12
-Nodes (24): LifePage(), metadata, generateMetadata(), generateStaticParams(), LifeArticlePage(), metadata, TechPage(), generateMetadata() (+16 more)
+Cohesion: 0.14
+Nodes (20): LifePage(), metadata, generateMetadata(), generateStaticParams(), LifeArticlePage(), metadata, TechPage(), generateMetadata() (+12 more)
 
 ### Community 3 - "compilerOptions"
 Cohesion: 0.07
@@ -131,10 +128,6 @@ Nodes (8): graphify reference: extra exports and benchmark, Step 6b - Wiki (only
 Cohesion: 0.29
 Nodes (5): inter, jetbrainsMono, metadata, viewport, ThemeProvider()
 
-### Community 12 - "subscribe.ts"
-Cohesion: 0.40
-Nodes (4): resend, subscribe(), subscribeSchema, NewsletterForm()
-
 ### Community 13 - "graphify reference: query, path, explain"
 Cohesion: 0.33
 Nodes (5): For /graphify explain, For /graphify path, graphify reference: query, path, explain, Step 0 — Constrained query expansion (REQUIRED before traversal), Step 1 — Traversal
@@ -164,28 +157,28 @@ Cohesion: 0.07
 Nodes (26): 1.1 Problem Statement, 1.2 Proposed Solution, 1.3 Success Criteria, 1. Executive Summary, 2.1 User Personas, 2.2 User Stories & Acceptance Criteria, 2.3 Non-Goals (Out of Scope), 2. User Experience & Functionality (+18 more)
 
 ### Community 39 - "floating-pill-nav.tsx"
-Cohesion: 0.22
-Nodes (9): BlogLayoutClient(), ScrollToTop(), socialLinks, FloatingPillNav(), navLinks, Footer(), GitHubIcon(), InstagramIcon() (+1 more)
+Cohesion: 0.12
+Nodes (18): subscribe(), subscribeSchema, competencies, experience, metadata, directChannels, metadata, BlogLayoutClient() (+10 more)
 
 ## Knowledge Gaps
-- **200 isolated node(s):** `metadata`, `metadata`, `metadata`, `metadata`, `metadata` (+195 more)
+- **203 isolated node(s):** `metadata`, `experience`, `competencies`, `metadata`, `directChannels` (+198 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **17 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `cn()` connect `cn` to `floating-pill-nav.tsx`?**
-  _High betweenness centrality (0.030) - this node is a cross-community bridge._
+  _High betweenness centrality (0.029) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `dependencies` to `devDependencies`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
-- **Why does `getAllPosts()` connect `post-detail.tsx` to `about-intro.tsx`?**
-  _High betweenness centrality (0.012) - this node is a cross-community bridge._
-- **What connects `metadata`, `metadata`, `metadata` to the rest of the system?**
-  _200 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.020) - this node is a cross-community bridge._
+- **Why does `getAllPosts()` connect `post-detail.tsx` to `cn`, `about-intro.tsx`?**
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+- **What connects `metadata`, `experience`, `competencies` to the rest of the system?**
+  _203 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `cn` be split into smaller, more focused modules?**
-  _Cohesion score 0.08879492600422834 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07547169811320754 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.04878048780487805 - nodes in this community are weakly interconnected._
 - **Should `post-detail.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.11596638655462185 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.14245014245014245 - nodes in this community are weakly interconnected._

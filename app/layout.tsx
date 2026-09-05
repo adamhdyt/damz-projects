@@ -12,6 +12,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://damz-projects.vercel.app'),
   title: {
     template: '%s | Adam Hidayat',
     default: 'Adam Hidayat — DBA Portfolio & Blog',
