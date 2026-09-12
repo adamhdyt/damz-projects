@@ -92,9 +92,15 @@ export const mdxComponents = {
   img: ({ src, alt }: { src?: string; alt?: string }) => {
     if (!src) return null
     return (
-      <figure className="my-8 overflow-hidden rounded-xl border border-border">
-        <div className="relative aspect-video w-full">
-          <Image src={src} alt={alt || ""} fill className="object-cover" />
+      <figure className="my-8 overflow-hidden rounded-xl border border-border bg-muted/20">
+        <div className="relative flex items-center justify-center overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={src}
+            alt={alt || ""}
+            className="h-auto max-h-[750px] w-auto max-w-full object-contain"
+            loading="lazy"
+          />
         </div>
         {alt && (
           <figcaption className="border-t border-border bg-muted/50 p-3 text-center text-sm text-muted-foreground">
