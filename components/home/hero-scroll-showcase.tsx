@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion"
 import { ArrowRight, FileText, Mail, ChevronDown } from "lucide-react"
+import { SITE_CONFIG } from "@/lib/constants"
 
 export const showcaseProjects = [
   {
@@ -14,7 +15,7 @@ export const showcaseProjects = [
     metric: "Zero Downtime",
     description: "Critical migration & upgrade of enterprise banking databases from 12c to 19c (RU 19.27) ensuring zero data loss and seamless failover.",
     image: "/images/post-oracle.png",
-    href: "/tech/oracle-scripts",
+    href: "/tech/oracle-19c-production-upgrade",
   },
   {
     id: "tuning",
@@ -23,7 +24,7 @@ export const showcaseProjects = [
     metric: "99% Faster",
     description: "Re-engineered bottlenecked execution plans, table partitioning, and indexing strategy, slashing batch financial query latency by over 99%.",
     image: "/images/post-datalayer.png",
-    href: "/tech/type-safe-data-layer",
+    href: "/tech/batch-query-optimization-99-percent",
   },
   {
     id: "training",
@@ -31,14 +32,15 @@ export const showcaseProjects = [
     tag: "Global DBA",
     metric: "Seoul, Korea",
     description: "Selected for intensive enterprise DBA training at Industrial Bank of Korea (IBK) Headquarters in Seoul, mastering advanced HA, RAC, and DR operations.",
-    image: "/images/post-rsc.png",
-    href: "/about",
+    image: "/images/tech_notes_banner.png",
+    href: "/tech/ibk-headquarters-seoul-dba-training",
   },
 ]
 
 /**
  * Desktop Scroll-Linked Hero to Selected Work Transition
  * Faithfully reproduces the Webild Creative Portfolio signature animation.
+ * Cards styled as polaroid/photo-print frames matching the reference site.
  */
 function DesktopHeroScrollShowcase() {
   const { scrollY } = useScroll()
@@ -109,13 +111,13 @@ function DesktopHeroScrollShowcase() {
 
             {/* Sub-headline */}
             <p className="text-sm lg:text-base text-muted-foreground leading-relaxed">
-              Saya berspesialisasi dalam mengelola dan mengoptimalkan database enterprise untuk memastikan performa optimal, keamanan ketat, dan <span className="text-foreground font-semibold">high availability</span>. Berpengalaman 4+ tahun di Oracle 19c RAC, SQL Server, dan PostgreSQL di industri perbankan.
+              I engineer, optimize, and scale mission-critical enterprise database architectures with an uncompromising focus on peak performance, tight security, and <span className="text-foreground font-semibold">high availability</span>. Over 4 years of production experience across Oracle 19c RAC, SQL Server, and PostgreSQL in the banking sector.
             </p>
 
             {/* CTAs */}
             <div className="flex items-center gap-3.5 pt-1">
               <a
-                href="/CV/Adam_Hidayat_DBA_CV.pdf"
+                href={SITE_CONFIG.cvUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-3 rounded-full bg-foreground px-6 py-3.5 text-xs font-semibold text-background transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-black/10 cursor-pointer"
@@ -180,7 +182,8 @@ function DesktopHeroScrollShowcase() {
           </motion.div>
 
           {/* STAGE 3: THE 3 CARDS TRANSFORMING FROM RIGHT-STACK TO 3-COLUMN GRID */}
-          <div className="relative h-[250px] w-full flex items-center justify-center">
+          {/* Cards are styled as polaroid/photo-print frames — matching the Webild reference */}
+          <div className="relative h-[280px] w-full flex items-center justify-center">
             {/* Center Anchor shifting from right to center */}
             <motion.div
               style={{ x: anchorX }}
@@ -194,18 +197,21 @@ function DesktopHeroScrollShowcase() {
                   rotate: card1Rotate,
                   zIndex: 3,
                 }}
-                className="absolute w-[350px] rounded-[28px] border border-border/80 bg-card p-2.5 shadow-2xl overflow-hidden flex flex-col group cursor-pointer"
+                className="absolute w-[350px] rounded-[28px] border border-border/60 bg-card p-2.5 shadow-2xl overflow-hidden flex flex-col group cursor-pointer hover:shadow-3xl transition-shadow duration-300"
               >
-                <div className="relative h-[220px] w-full overflow-hidden bg-zinc-900 rounded-[20px]">
+                <div className="relative h-[240px] w-full overflow-hidden bg-zinc-900 rounded-[18px]">
                   <Image
                     src={showcaseProjects[0].image}
                     alt={showcaseProjects[0].title}
                     fill
+                    priority
+                    loading="eager"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+                  {/* Warm badge — Webild reference style */}
                   <div className="absolute bottom-3 left-3">
-                    <span className="rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[11px] font-semibold text-white border border-white/20">
+                    <span className="rounded-full bg-[#e8d5b0] px-3 py-1 text-[11px] font-semibold text-[#7a5c2e] shadow-sm">
                       {showcaseProjects[0].tag}
                     </span>
                   </div>
@@ -225,18 +231,18 @@ function DesktopHeroScrollShowcase() {
                   rotate: card2Rotate,
                   zIndex: 2,
                 }}
-                className="absolute w-[350px] rounded-[28px] border border-border/80 bg-card p-2.5 shadow-2xl overflow-hidden flex flex-col group cursor-pointer"
+                className="absolute w-[350px] rounded-[28px] border border-border/60 bg-card p-2.5 shadow-2xl overflow-hidden flex flex-col group cursor-pointer hover:shadow-3xl transition-shadow duration-300"
               >
-                <div className="relative h-[220px] w-full overflow-hidden bg-zinc-900 rounded-[20px]">
+                <div className="relative h-[240px] w-full overflow-hidden bg-zinc-900 rounded-[18px]">
                   <Image
                     src={showcaseProjects[1].image}
                     alt={showcaseProjects[1].title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
                   <div className="absolute bottom-3 left-3">
-                    <span className="rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[11px] font-semibold text-white border border-white/20">
+                    <span className="rounded-full bg-white/90 backdrop-blur-md px-3 py-1 text-[11px] font-semibold text-zinc-900 shadow-sm">
                       {showcaseProjects[1].tag}
                     </span>
                   </div>
@@ -256,18 +262,18 @@ function DesktopHeroScrollShowcase() {
                   rotate: card3Rotate,
                   zIndex: 1,
                 }}
-                className="absolute w-[350px] rounded-[28px] border border-border/80 bg-card p-2.5 shadow-2xl overflow-hidden flex flex-col group cursor-pointer"
+                className="absolute w-[350px] rounded-[28px] border border-border/60 bg-card p-2.5 shadow-2xl overflow-hidden flex flex-col group cursor-pointer hover:shadow-3xl transition-shadow duration-300"
               >
-                <div className="relative h-[220px] w-full overflow-hidden bg-zinc-900 rounded-[20px]">
+                <div className="relative h-[240px] w-full overflow-hidden bg-zinc-900 rounded-[18px]">
                   <Image
                     src={showcaseProjects[2].image}
                     alt={showcaseProjects[2].title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
                   <div className="absolute bottom-3 left-3">
-                    <span className="rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[11px] font-semibold text-white border border-white/20">
+                    <span className="rounded-full bg-white/90 backdrop-blur-md px-3 py-1 text-[11px] font-semibold text-zinc-900 shadow-sm">
                       {showcaseProjects[2].tag}
                     </span>
                   </div>
@@ -345,12 +351,12 @@ function MobileHeroShowcase() {
         </h1>
 
         <p className="text-base text-muted-foreground leading-relaxed">
-          Saya berspesialisasi dalam mengelola dan mengoptimalkan arsitektur database enterprise untuk memastikan performa maksimal, keamanan ketat, dan high availability. Pengalaman 4+ tahun di Oracle 19c RAC, SQL Server, MySQL, dan PostgreSQL di industri perbankan.
+          I engineer, optimize, and scale mission-critical enterprise database architectures with an uncompromising focus on peak performance, tight security, and high availability. Over 4 years of production experience across Oracle 19c RAC, SQL Server, and PostgreSQL in the banking sector.
         </p>
 
         <div className="flex flex-wrap items-center gap-3 pt-2">
           <a
-            href="/CV/Adam_Hidayat_DBA_CV.pdf"
+            href={SITE_CONFIG.cvUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2.5 rounded-full bg-foreground px-5 py-3 text-xs font-semibold text-background hover:opacity-90"
@@ -381,17 +387,18 @@ function MobileHeroShowcase() {
           {showcaseProjects.map((project) => (
             <div
               key={project.id}
-              className="rounded-3xl border border-border bg-card overflow-hidden shadow-sm flex flex-col group p-2"
+              className="rounded-[28px] border border-border/60 bg-card overflow-hidden shadow-sm flex flex-col group p-2.5"
             >
-              <div className="relative aspect-[16/11] w-full bg-zinc-900 rounded-2xl overflow-hidden">
+              <div className="relative aspect-[16/11] w-full bg-zinc-900 rounded-[18px] overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
                   className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
                 <div className="absolute bottom-3 left-3">
-                  <span className="rounded-full bg-black/75 backdrop-blur-md px-2.5 py-0.5 text-[11px] font-semibold text-white border border-white/20">
+                  <span className="rounded-full bg-white/90 backdrop-blur-md px-2.5 py-0.5 text-[11px] font-semibold text-zinc-900 shadow-sm">
                     {project.tag}
                   </span>
                 </div>

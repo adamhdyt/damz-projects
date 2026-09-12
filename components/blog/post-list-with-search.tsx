@@ -67,7 +67,7 @@ export function PostListWithSearch({
   return (
     <>
       {/* Search Bar & Tag Filters */}
-      <div className="sticky top-[73px] z-10 border-b border-border bg-background/80 px-6 py-4 backdrop-blur-md sm:px-8">
+      <div className="border-b border-border/80 bg-background px-6 py-4 sm:px-8">
         <div className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2">
           <Search className="size-4 shrink-0 text-muted-foreground" />
           <input

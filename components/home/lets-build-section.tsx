@@ -3,28 +3,36 @@
 import React, { useState, useTransition } from "react"
 import Image from "next/image"
 import { Send, CheckCircle2, AlertCircle, Loader2, Video, Mail } from "lucide-react"
-import { subscribe } from "@/app/actions/subscribe"
+import { sendContactMessage } from "@/app/actions/contact"
+import { SITE_CONFIG } from "@/lib/constants"
 
 export function LetsBuildSection() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
+  const [botField, setBotField] = useState("")
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
+  const [errorMessage, setErrorMessage] = useState("")
   const [isPending, startTransition] = useTransition()
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (!email || isPending) return
+    if (!email || !name || !message || isPending) return
 
     setStatus("idle")
+    setErrorMessage("")
     const formData = new FormData()
+    formData.append("name", name)
     formData.append("email", email)
+    formData.append("message", message)
+    if (botField) formData.append("botField", botField)
 
     startTransition(async () => {
       try {
-        const res = await subscribe(formData)
+        const res = await sendContactMessage(formData)
         if (res.error) {
           setStatus("error")
+          setErrorMessage(res.error)
         } else {
           setStatus("success")
           setName("")
@@ -33,6 +41,7 @@ export function LetsBuildSection() {
         }
       } catch {
         setStatus("error")
+        setErrorMessage("Something went wrong. Please try emailing me directly.")
       }
     })
   }
@@ -84,17 +93,29 @@ export function LetsBuildSection() {
                   rows={4}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Tell me about your database or project..."
+                  placeholder="Tell me about your database challenge or project..."
                   required
                   disabled={isPending || status === "success"}
                   className="w-full rounded-2xl border border-border/80 bg-background/80 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
                 />
               </div>
 
+              {/* Honeypot Spam Trap */}
+              <input
+                type="text"
+                name="botField"
+                value={botField}
+                onChange={(e) => setBotField(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                className="hidden"
+                aria-hidden="true"
+              />
+
               <button
                 type="submit"
                 disabled={isPending || status === "success"}
-                className="w-full rounded-2xl bg-foreground text-background py-3.5 px-6 text-sm font-semibold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-sm disabled:opacity-50"
+                className="w-full rounded-2xl bg-foreground text-background py-3.5 px-6 text-sm font-semibold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-sm disabled:opacity-50 cursor-pointer"
               >
                 {isPending ? (
                   <>
@@ -109,7 +130,14 @@ export function LetsBuildSection() {
               {status === "success" && (
                 <div className="flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-3">
                   <CheckCircle2 className="size-4 shrink-0" />
-                  <span>Message sent! Thank you, I will get back to you shortly.</span>
+                  <span>Thank you! Your message has been sent directly to Adam. I will get back to you shortly.</span>
+                </div>
+              )}
+
+              {status === "error" && (
+                <div className="flex items-center gap-2 text-xs text-red-600 dark:text-red-400 bg-red-500/10 border border-red-500/20 rounded-xl p-3">
+                  <AlertCircle className="size-4 shrink-0" />
+                  <span>{errorMessage || "Failed to send message. Please try emailing directly."}</span>
                 </div>
               )}
             </form>
@@ -130,15 +158,15 @@ export function LetsBuildSection() {
           {/* Floating Pill Overlay */}
           <div className="relative z-10 flex items-center justify-between gap-4">
             <a
-              href="mailto:adamhdyt11@gmail.com"
+              href={`mailto:${SITE_CONFIG.email}`}
               className="inline-flex items-center gap-2 rounded-full bg-black/80 backdrop-blur-md px-5 py-2.5 text-xs font-semibold text-white border border-white/20 hover:bg-black transition-colors"
             >
               <Mail className="size-3.5" />
-              <span>adamhdyt11@gmail.com</span>
+              <span>{SITE_CONFIG.email}</span>
             </a>
 
             <div className="text-right text-xs text-white/80 hidden sm:block">
-              Jakarta, Indonesia (GMT+7)
+              {SITE_CONFIG.location}
             </div>
           </div>
         </div>

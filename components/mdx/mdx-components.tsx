@@ -2,7 +2,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { CodeBlock } from "@/components/blog/code-block"
 import { ScriptSearch } from "@/components/blog/script-search"
-import { AffiliateDisclosure } from "@/components/blog/affiliate-disclosure"
 
 function extractText(node: React.ReactNode): string {
   if (typeof node === "string") return node
@@ -135,6 +134,5 @@ export const mdxComponents = {
       {children}
     </section>
   ),
-  AffiliateDisclosure,
 }
 

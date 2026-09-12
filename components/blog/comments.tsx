@@ -38,9 +38,6 @@ export function Comments() {
           loading="lazy"
         />
       </div>
-      <p className="text-xs text-muted-foreground mt-4 text-center">
-        Note: If comments fail to load, please configure your Giscus repoId and categoryId in <code>components/blog/comments.tsx</code>.
-      </p>
     </div>
   )
 }

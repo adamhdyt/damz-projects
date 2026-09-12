@@ -24,14 +24,14 @@ export function MainContent({
   return (
     <main className="flex h-full flex-col">
       {/* Top bar (Title and Description only) */}
-      <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-border bg-background/80 px-6 py-4 backdrop-blur-md sm:px-8">
+      <div className="flex items-center justify-between gap-4 border-b border-border/80 bg-background px-6 py-6 sm:px-8">
         <div>
-          <h1 className="text-lg font-semibold text-foreground text-balance sm:text-xl">
+          <h1 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
             {meta.title}
           </h1>
-          <p className="text-sm text-muted-foreground">{meta.description}</p>
+          <p className="mt-1 text-sm text-muted-foreground">{meta.description}</p>
         </div>
-      </header>
+      </div>
 
       {/* Interactive Search and Post Grid */}
       <PostListWithSearch section={section} posts={posts} />

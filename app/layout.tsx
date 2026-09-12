@@ -1,5 +1,4 @@
 import { Analytics } from '@vercel/analytics/next'
-import Script from 'next/script'
 import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
@@ -18,7 +17,6 @@ export const metadata: Metadata = {
     default: 'Adam Hidayat — DBA Portfolio & Blog',
   },
   description: 'Database Administrator specializing in Oracle, SQL Server, PostgreSQL & MySQL. Tech notes, scripts, and life reflections.',
-  generator: 'v0.app',
   icons: {
     icon: [
       {
@@ -58,12 +56,6 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} bg-background`}
     >
       <body className="font-sans antialiased" suppressHydrationWarning>
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" // TODO: Replace with real ID
-          crossOrigin="anonymous"
-          strategy="lazyOnload"
-        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

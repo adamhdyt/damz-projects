@@ -9,6 +9,7 @@ import { Plus, X, ArrowUpRight, Mail, FileText, Moon, Sun } from "lucide-react"
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from "@/components/ui/icons"
 import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
+import { SITE_CONFIG } from "@/lib/constants"
 
 const navLinks = [
   { label: "Home", href: "/", isAnchor: false },
@@ -201,7 +202,7 @@ export function FloatingPillNav() {
               <div className="mt-3 space-y-3 pt-3 border-t border-border">
                 {/* Download CV CTA Button */}
                 <a
-                  href="/CV/Adam_Hidayat_DBA_CV.pdf"
+                  href={SITE_CONFIG.cvUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
@@ -214,7 +215,7 @@ export function FloatingPillNav() {
                 {/* Social Links Bar */}
                 <div className="flex items-center justify-center gap-2 pt-1">
                   <a
-                    href="https://github.com/adamhdyt"
+                    href={SITE_CONFIG.socials.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex size-8 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
@@ -223,7 +224,7 @@ export function FloatingPillNav() {
                     <GitHubIcon className="size-3.5" />
                   </a>
                   <a
-                    href="https://linkedin.com/in/adamhdyt"
+                    href={SITE_CONFIG.socials.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex size-8 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
@@ -232,7 +233,7 @@ export function FloatingPillNav() {
                     <LinkedInIcon className="size-3.5" />
                   </a>
                   <a
-                    href="https://instagram.com/adamhdytt"
+                    href={SITE_CONFIG.socials.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex size-8 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
@@ -241,7 +242,7 @@ export function FloatingPillNav() {
                     <InstagramIcon className="size-3.5" />
                   </a>
                   <a
-                    href="mailto:adamhdyt11@gmail.com"
+                    href={SITE_CONFIG.socials.email}
                     className="flex size-8 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
                     aria-label="Send Email"
                   >

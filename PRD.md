@@ -1,22 +1,34 @@
 # Product Requirements Document (PRD)
-# Website Portofolio Pribadi Adam Hidayat (Creative Portfolio Redesign)
+# Website Portofolio & Engineering Journal — Adam Hidayat
+### Refinement, De-Slopping, and Feature Enhancement Specification
 
 ---
 
 ## 1. Executive Summary
 
 ### 1.1 Problem Statement
-Portofolio web Adam Hidayat sebelumnya (`damz-projects.vercel.app`) memiliki konten teknis dan kredensial yang kaya (4+ tahun pengalaman DBA di perbankan, 6 sertifikasi Oracle, tech notes), namun disajikan dengan struktur layout konvensional berbasis teks panjang yang kurang menonjolkan visual storytelling, pengalaman interaktif modern, dan diferensiasi personal brand yang kuat di mata rekruter, hiring manager industri perbankan/fintech, maupun komunitas teknologi.
+Implementasi terkini dari portofolio web Adam Hidayat (`damz-projects`) telah berhasil mengadopsi gaya visual editorial minimalis dan animasi transisi *scroll-linked* bertema polaroid (terinspirasi dari *Webild Creative Portfolio*). Namun, hasil audit mendalam mengungkap bahwa website ini masih dipenuhi oleh artefak **"AI Slop"** (75% artikel blog berstatus kosong dengan teks `# Content goes here`, aset ilustrasi neon sirkuit generik yang didaur ulang secara tidak kontekstual, banner iklan dummy AdSense, dan teks instruksi developer yang bocor ke UI publik). 
+
+Selain itu, terdapat **kegagalan fungsional kritis**: formulir kontak *"Let's Build"* di halaman depan membuang nama dan isi pesan pengunjung (hanya mendaftarkan email ke newsletter), tautan sosial media di navbar memiliki typo menuju profil yang salah, dan tautan *"Read case study"* pada Selected Work mengarah ke halaman kosong atau tidak relevan.
 
 ### 1.2 Proposed Solution
-Membangun ulang website portofolio menggunakan inspirasi desain editorial minimalis **Webild — "Creative Portfolio"** dengan mempertahankan seluruh konten profesional asli milik Adam. Fitur signature utama adalah **Floating Pill Header Nav**, **Hero Visual dengan Stacked/Tilted Cards**, dan **Scroll-Linked Transition (Hero → Selected Work/Projects)** menggunakan Framer Motion, dilengkapi galeri sertifikasi (lightbox), showcase pencapaian kunci, serta direktori artikel Tech Notes & Life.
+Melakukan pembersihan total (*de-slopping*), perbaikan fungsionalitas kritis, dan peningkatan mutu produk (*enhancement*):
+1. **Perbaikan Fungsional Kontak**: Mengubah form "Let's Build" menjadi pipeline pesan kontak nyata berbasis Server Action & Resend API yang mengirimkan Nama, Email, dan Pesan langsung ke inbox `adamhdyt11@gmail.com` dengan validasi Zod dan proteksi spam.
+2. **Pembersihan Artefak AI Slop & Template Dummy**: Menghapus seluruh placeholder AdSense dummy (`ca-pub-XXXXXXXXXXXXXXXX`), membersihkan instruksi developer pada Giscus, menghapus metadata generator `v0.app`, serta menghapus file aset template yang tidak terpakai.
+3. **Penyempurnaan Konten & Studi Kasus Otentik**: Menghapus 6 artikel stub kosong dan menggantikannya dengan **3 studi kasus teknis mendalam (in-depth case studies)** yang sesuai dengan 3 kartu pencapaian utama di Hero / Selected Work:
+   - *Production Database Upgrade (Oracle 12c ke 19c RU 19.27)*
+   - *Batch Performance Tuning (>99% latency reduction)*
+   - *International Enterprise DBA Training di IBK Headquarters Seoul*
+4. **Koreksi Navigasi & Konsistensi Tautan**: Memperbaiki typo URL media sosial di Floating Pill Nav dan memusatkan sumber data profil.
+5. **Penyelarasan Desain & UX**: Memperbaiki tabrakan layout antara *sticky sub-header* artikel dengan *floating pill navbar*, menyelaraskan seluruh copywriting ke dalam Bahasa Inggris profesional, dan meningkatkan kontras visual frame polaroid pada Light Mode.
+6. **Optimasi Performa Aset**: Mengompresi foto potret 6.2 MB dan galeri foto gunung 8.4 MB ke format WebP teroptimasi (< 250 KB per gambar) untuk mencapai skor LCP tinggi di perangkat mobile.
 
 ### 1.3 Success Criteria
-1. **Lighthouse Score**: Nilai ≥ 90 untuk Performance, Accessibility, Best Practices, dan SEO.
-2. **Engagement & Interaction**: Transisi scroll-linked Hero ke Selected Work berjalan mulus (60 FPS) di desktop dan memiliki fallback adaptif/tanpa lag di mobile.
-3. **Conversion / Action**: Keterlihatan CTA utama ("Download CV" dan "Contact") meningkat dengan klik langsung ke dokumen CV PDF (`/CV/Adam_Hidayat_DBA_CV.pdf`) atau form kontak.
-4. **Content Continuity**: 100% konten blog (Tech Notes dan Life) serta arsitektur slug (`/tech/[slug]`, `/life/[slug]`) tetap utuh tanpa broken links.
-5. **Full Responsiveness**: 100% layout dan animasi adaptif di viewport Mobile (360px+), Tablet (768px+), dan Desktop (1024px, 1440px+).
+1. **Zero AI Slop**: 0% halaman atau artikel yang memuat teks placeholder dummy, 0 banner iklan tiruan, 0 instruksi developer yang bocor di UI, dan 0 file *dead code*.
+2. **100% Functional Integrity**: Formulir kontak berhasil mengirimkan pesan lengkap ke email Adam, seluruh tautan sosial media mengarah ke akun terverifikasi, dan semua tombol studi kasus membuka konten nyata yang kaya.
+3. **Lighthouse Score**: Nilai ≥ 95 untuk Performance, Accessibility, Best Practices, dan SEO pada perangkat Desktop dan Mobile.
+4. **Performance Core Web Vitals**: Largest Contentful Paint (LCP) ≤ 1.8 detik pada jaringan 4G/Mobile dan First Contentful Paint (FCP) ≤ 1.0 detik.
+5. **Unified Editorial Voice**: 100% konten publik menggunakan Bahasa Inggris teknis perbankan yang kredibel, konsisten, dan bebas dari campur aduk bahasa yang canggung.
 
 ---
 
@@ -24,179 +36,248 @@ Membangun ulang website portofolio menggunakan inspirasi desain editorial minima
 
 ### 2.1 User Personas
 
-1. **Tech Recruiter / Talent Acquisition (Perbankan / FinTech)**
-   - *Tujuan*: Memverifikasi kualifikasi, pengalaman DBA, sertifikasi resmi Oracle, dan mengunduh CV dalam waktu < 60 detik.
-   - *Pain Point*: Bosan dengan resume teks standar yang monoton; butuh ringkasan visual yang terstruktur, kredibel, dan cepat diakses.
+1. **Tech Recruiter & Talent Acquisition (Banking / FinTech)**
+   - *Kebutuhan*: Memvalidasi kredensial Oracle, 4+ tahun pengalaman perbankan, mengunduh CV PDF resmi, dan mengirim pesan penawaran kerja langsung melalui web dalam < 60 detik.
+   - *Pain Point*: Kecewa jika formulir kontak tidak jelas statusnya, link sosial media salah, atau portfolio terasa seperti template AI yang dibuat secara instan tanpa kurasi.
 
-2. **Hiring Manager / Head of Infrastructure / Lead DBA**
-   - *Tujuan*: Menguji kedalaman teknis kandidat (deep-dive query tuning, arsitektur RAC, disaster recovery Data Guard, penanganan insiden produksi).
-   - *Pain Point*: Klaim resume sering kali sulit diverifikasi tanpa studi kasus nyata atau technical writing.
+2. **Lead DBA / Head of Infrastructure / Hiring Manager**
+   - *Kebutuhan*: Menguji kedalaman teknis kandidat melalui studi kasus pemecahan masalah riil (misal: strategi switchover Data Guard zero data loss, tuning batch job lambat, penanganan insiden).
+   - *Pain Point*: Menolak klaim resume jika link *"Read case study"* justru mengarah ke artikel kosong atau file skrip mentah tanpa analisis bisnis/arsitektur.
 
-3. **Komunitas Database Administrator & Pembaca Blog**
-   - *Tujuan*: Mencari script SQL/Oracle siap pakai, tips troubleshooting database perbankan, dan membaca cerita kehidupan personal (hiking, refleksi).
+3. **Database Administrator & Engineering Community**
+   - *Kebutuhan*: Membaca skrip troubleshooting SQL/Oracle siap pakai, tips arsitektur RAC, dan refleksi hidup seimbang (hiking & gunung).
+   - *Pain Point*: Terganggu oleh banner placeholder AdSense yang tidak berfungsi atau tampilan mobile yang saling menabrak.
 
 ---
 
 ### 2.2 User Stories & Acceptance Criteria
 
-#### Story 1: Floating Pill Navigation
-*Sebagai pengunjung, saya ingin menu navigasi yang ringkas, modern, dan selalu mudah dijangkau di bagian atas tanpa menutupi konten.*
-- **AC 1.1**: Floating pill navigation tampil melayang (*fixed*) di bagian atas tengah layar, menampilkan avatar, nama "Adam Hidayat", dan tombol `+` menu.
-- **AC 1.2**: Mengklik tombol `+` membuka modal/card navigasi elegan (Work, About, Certifications, Blog, Contact) dengan ikon panah keluar (`↗`) dan tombol aksi kontak.
-- **AC 1.3**: Menu dapat ditutup menggunakan tombol close (`×`), tombol `Esc`, atau klik di luar modal (backdrop click).
-- **AC 1.4**: Responsif dan tetap proporsional pada layar ponsel.
+#### Epic 1: Contact Pipeline & Inquiry Delivery
+*Sebagai calon klien atau rekruter, saya ingin mengirim pesan konsultasi atau penawaran kerja lengkap beserta nama, email, dan detail proyek saya agar Adam dapat merespons dalam 24 jam.*
 
-#### Story 2: Hero Section & CTA
-*Sebagai rekruter, saya ingin langsung mengetahui siapa Adam, keahlian utamanya, status ketersediaan kerjanya, dan dapat segera mengunduh CV.*
-- **AC 2.1**: Terdapat badge status ketersediaan dengan indikator dot hijau: *"Open to opportunities"*.
-- **AC 2.2**: Headline kuat: *"Hi, I'm Adam Hidayat — Database Administrator."*
-- **AC 2.3**: Deskripsi ringkas 4+ tahun pengalaman di Oracle, SQL Server, MySQL, PostgreSQL di industri perbankan.
-- **AC 2.4**: Tombol CTA utama *"Download CV"* langsung men-download / membuka `/CV/Adam_Hidayat_DBA_CV.pdf`.
-- **AC 2.5**: Tombol CTA sekunder mengarah ke section kontak atau form email.
-- **AC 2.6**: Stat counter: `4+ Years DBA`, `6 Oracle Certs`, `Banking Industry`.
+- **AC 1.1**: Form "Let's Build" di halaman depan ([`components/home/lets-build-section.tsx`](file:///Users/adamhdyt/Work/WebProject/damz-projects/components/home/lets-build-section.tsx)) dan form di halaman kontak ([`app/(blog)/contact/page.tsx`](file:///Users/adamhdyt/Work/WebProject/damz-projects/app/(blog)/contact/page.tsx)) mengikat seluruh input field: `name`, `email`, dan `message`.
+- **AC 1.2**: Data divalidasi di sisi klien dan server menggunakan skema Zod:
+  - `name`: Minimal 2 karakter, maksimal 100 karakter.
+  - `email`: Format email valid.
+  - `message`: Minimal 10 karakter, maksimal 2000 karakter.
+- **AC 1.3**: Server Action (`sendContactMessage`) mengirimkan email notifikasi ke `adamhdyt11@gmail.com` menggunakan Resend API dengan menyertakan nama pengirim, email pengirim, dan isi pesan lengkap.
+- **AC 1.4**: Mengimplementasikan proteksi spam ringan (honeypot field tak kasat mata) untuk mencegah bot submission tanpa mengganggu UX pengguna asli.
+- **AC 1.5**: Menampilkan status interaktif: *loading state* (spinner + tombol dinonaktifkan), *success alert* ("Thank you, Adam has received your message!"), dan *error alert* yang ramah jika pengiriman gagal.
 
-#### Story 3: Scroll-Linked Card Transition (Hero → Selected Work)
-*Sebagai pengunjung, saya ingin merasakan transisi visual yang seamless dan memukau saat scroll dari Hero ke Selected Work.*
-- **AC 3.1**: Di Hero section, 3 kartu foto/showcase ditampilkan bertumpuk dan miring (stacked & tilted) di sisi kanan desktop.
-- **AC 3.2**: Saat user melakukan scroll ke bawah, kartu-kartu tersebut tertahan (*pinned*), perlahan berotasi ke sudut 0°, dan merenggang secara proporsional.
-- **AC 3.3**: Kartu "mendarat" sempurna menjadi grid 3-kolom pada section *"Projects That Speak for Themselves"* (Key Achievements).
-- **AC 3.4**: Heading section muncul secara halus (*fade-in & slide-up*) di balik/bawah kartu yang sedang bertransisi.
-- **AC 3.5**: Mematuhi `prefers-reduced-motion` untuk aksesibilitas (fallback langsung ke grid statis tanpa animasi transform berat jika sistem meminta reduce motion).
-- **AC 3.6**: Tidak ada layout thrashing / drop FPS yang signifikan di perangkat mobile.
+#### Epic 2: Authentic Case Studies for Key Achievements
+*Sebagai hiring manager, saya ingin membaca studi kasus mendalam saat mengklik "Read case study" pada 3 kartu Selected Work agar dapat memverifikasi kapabilitas teknis Adam.*
 
-#### Story 4: Key Achievements Showcase
-*Sebagai hiring manager, saya ingin melihat ringkasan pencapaian konkret Adam di database perbankan.*
-- **AC 4.1**: 3 pencapaian utama ditampilkan dalam kartu grid:
-  1. *Production Database Upgrade* (Oracle 12c ke 19c patch 19.27).
-  2. *Performance Optimization* (Optimasi bottleneck batch query > 99%).
-  3. *International Training* (Pelatihan DBA intensif di Kantor Pusat IBK, Korea Selatan).
-- **AC 4.2**: Setiap kartu memiliki tag kategori, visual representatif, judul, dan ringkasan dampak bisnis/teknis.
+- **AC 2.1**: Menyediakan 3 artikel studi kasus teknis komprehensif dalam direktori `content/tech/`:
+  1. `oracle-19c-production-upgrade.mdx`:
+     - *Latar Belakang*: Arsitektur core banking 12c, tantangan SLA 24/7.
+     - *Strategi*: Oracle Active Data Guard rolling switchover, fallback plan, pre-upgrade testing via Real Application Testing (RAT).
+     - *Hasil*: Migrasi ke 19c RU 19.27 dengan Zero Downtime dan 0 transactional data loss.
+  2. `batch-query-optimization-99-percent.mdx`:
+     - *Latar Belakang*: Bottleneck proses batch akhir bulan (EOM) yang memakan waktu belasan jam.
+     - *Diagnosa*: Analisis AWR, ASH, I/O wait events, latch contention.
+     - *Solusi & Hasil*: Re-engineering execution plan, optimalisasi partisi tabel, defragmentasi index, memangkas durasi eksekusi > 99%.
+  3. `ibk-headquarters-seoul-dba-training.mdx`:
+     - *Latar Belakang*: Program technical training intensif di Industrial Bank of Korea Headquarters, Seoul.
+     - *Materi*: High Availability RAC cluster, disaster recovery cross-region, automasi enterprise monitoring.
+     - *Dokumentasi*: Foto/sertifikat otentik dan pelajaran kunci yang diterapkan di Indonesia.
+- **AC 2.2**: Tautan *"Read case study →"* pada 3 kartu di [`hero-scroll-showcase.tsx`](file:///Users/adamhdyt/Work/WebProject/damz-projects/components/home/hero-scroll-showcase.tsx) mengarah tepat ke slug studi kasus masing-masing:
+  - Card 1 ➔ `/tech/oracle-19c-production-upgrade`
+  - Card 2 ➔ `/tech/batch-query-optimization-99-percent`
+  - Card 3 ➔ `/tech/ibk-headquarters-seoul-dba-training`
+- **AC 2.3**: Setiap kartu studi kasus dilengkapi ringkasan metrik, badge kategori, dan estimasi waktu baca yang akurat.
 
-#### Story 5: About Section (Editorial Quote + Portrait)
-*Sebagai pengunjung, saya ingin membaca latar belakang dan filosofi kerja Adam dengan format editorial yang elegan.*
-- **AC 5.1**: Split-layout: Sisi kiri berupa Quote Card dengan ikon kutipan `”`, ringkasan filosofi profesional, dan nama.
-- **AC 5.2**: Sisi kanan berupa foto potret profesional Adam dengan pill link sosial (LinkedIn, GitHub, Instagram, Email).
-- **AC 5.3**: Tombol menuju halaman `/about` lengkap untuk membaca biografi panjang.
+#### Epic 3: AI Slop & Placeholder Purge
+*Sebagai pengunjung, saya ingin setiap elemen visual dan konten teks di website terasa otentik, profesional, dan selesai dikerjakan.*
 
-#### Story 6: Certifications Showcase & Lightbox Preview
-*Sebagai rekruter, saya ingin memverifikasi keaslian sertifikasi Oracle Adam beserta dokumen resminya.*
-- **AC 6.1**: Daftar 6 sertifikasi Oracle ditampilkan dalam kartu rapi dengan preview gambar sertifikat.
-- **AC 6.2**: Mengklik kartu sertifikat membuka Lightbox Modal beresolusi tinggi sehingga teks sertifikat dapat dibaca jelas.
-- **AC 6.3**: Lightbox mendukung tombol navigasi next/prev, zoom, dan close (`Esc`).
+- **AC 3.1**: Menghapus seluruh 6 artikel MDX stub yang hanya berisi `# Content goes here`:
+  - `profiling-postgres.mdx`, `react-server-components.mdx`, `type-safe-data-layer.mdx`.
+  - `reading-habit.mdx`, `shipping-small.mdx`, `small-town.mdx`.
+- **AC 3.2**: Daftar artikel yang aktif di web adalah konten berkualitas tinggi yang utuh:
+  - **Tech**: 3 Case Studies Baru + `oracle-scripts.mdx` (total 4 artikel teknis solid).
+  - **Life**: `mountain-journal.mdx` (jurnal foto gunung otentik).
+- **AC 3.3**: Menghapus banner AdSense dummy ([`components/blog/ad-banner.tsx`](file:///Users/adamhdyt/Work/WebProject/damz-projects/components/blog/ad-banner.tsx)) dan script AdSense placeholder di [`app/layout.tsx`](file:///Users/adamhdyt/Work/WebProject/damz-projects/app/layout.tsx).
+- **AC 3.4**: Menghapus teks instruksi developer scaffolding pada widget Giscus ([`components/blog/comments.tsx`](file:///Users/adamhdyt/Work/WebProject/damz-projects/components/blog/comments.tsx)).
+- **AC 3.5**: Menghapus tag `generator: 'v0.app'` pada metadata root layout.
+- **AC 3.6**: Menghapus file gambar dummy bawaan dari direktori `public/`: `placeholder-logo.svg`, `placeholder-user.jpg`, `placeholder.jpg`, dll.
+- **AC 3.7**: Menghapus 7 file komponen lama yang mati (*dead code*):
+  - `hero-section.tsx`, `selected-work-section.tsx`, `sidebar.tsx`, `mobile-nav.tsx`, `newsletter-form.tsx`, `theme-toggle.tsx`, `affiliate-disclosure.tsx`.
 
-#### Story 7: Tech Notes & Life (Blog Showcase & Navigation)
-*Sebagai sesama engineer atau pembaca, saya ingin menjelajahi catatan teknis dan cerita personal.*
-- **AC 7.1**: Card navigasi 2 pilar konten: **Tech Notes** (Engineering) dan **Life** (Personal/Hiking/Travel).
-- **AC 7.2**: Menampilkan 3-4 artikel terbaru dengan tag, tanggal, dan estimasi waktu baca.
-- **AC 7.3**: Fitur pencarian dan filter tag yang responsif di halaman listing `/tech` dan `/life`.
+#### Epic 4: Navigation Integrity & Profile Synchronization
+*Sebagai pengunjung, saya ingin menu navigasi melayang (Floating Pill) menghubungkan saya ke profil media sosial Adam yang benar tanpa ada broken link.*
 
-#### Story 8: Contact Form & Social Connect
-*Sebagai calon klien atau rekruter, saya ingin dapat menghubungi Adam melalui formulir web atau email langsung.*
-- **AC 8.1**: Formulir kontak interaktif (Nama, Email, Pesan) dengan validasi form.
-- **AC 8.2**: Link langsung ke email `adamhdyt11@gmail.com` dan profil sosial.
+- **AC 4.1**: Memperbaiki seluruh tautan media sosial di [`components/navigation/floating-pill-nav.tsx`](file:///Users/adamhdyt/Work/WebProject/damz-projects/components/navigation/floating-pill-nav.tsx):
+  - LinkedIn: `https://www.linkedin.com/in/adam-hidayat/` (sebelumnya `adamhdyt` yang salah).
+  - Instagram: `https://www.instagram.com/adamhdyt/` (sebelumnya `adamhdytt` dengan double 't').
+  - GitHub: `https://github.com/adamhdyt`
+  - Email: `mailto:adamhdyt11@gmail.com`
+- **AC 4.2**: Seluruh tautan profil diekstraksi ke dalam satu konstanta terpusat (`lib/constants.ts`) agar tidak ada inkonsistensi antar komponen (Navbar, About Page, Contact Page, Footer).
+
+#### Epic 5: Layout Collision Fix & Visual Polish
+*Sebagai pembaca artikel blog, saya ingin header navigasi dan sticky breadcrumb tidak saling menutupi saat saya melakukan scroll.*
+
+- **AC 5.1**: Pada halaman detail artikel ([`components/blog/post-detail.tsx`](file:///Users/adamhdyt/Work/WebProject/damz-projects/components/blog/post-detail.tsx)) dan halaman listing ([`components/blog/main-content.tsx`](file:///Users/adamhdyt/Work/WebProject/damz-projects/components/blog/main-content.tsx)), atur posisi sticky header agar tidak bertabrakan dengan `FloatingPillNav`. Sub-header diposisikan dengan offset `top-20` atau diintegrasikan secara bersih sehingga tombol "Back" dan judul kategori selalu terlihat jelas dan dapat diklik.
+- **AC 5.2**: Hero Section di [`hero-scroll-showcase.tsx`](file:///Users/adamhdyt/Work/WebProject/damz-projects/components/home/hero-scroll-showcase.tsx) diselaraskan menggunakan **Bahasa Inggris profesional**:
+  > *"I engineer, optimize, and scale mission-critical enterprise database architectures with an uncompromising focus on peak performance, tight security, and high availability. Over 4 years of production experience in Oracle 19c RAC, SQL Server, and PostgreSQL in the banking industry."*
+- **AC 5.3**: Di Light Mode, border kartu polaroid diberikan border warna halus yang lebih tegas (`border-zinc-200/90 shadow-lg shadow-zinc-200/50`) agar kartu tidak tenggelam pada latar belakang terang.
+
+#### Epic 6: Asset Compression & Mobile Performance Optimization
+*Sebagai pengguna perangkat seluler dengan kuota terbatas, saya ingin halaman terbuka dalam hitungan detik tanpa memuat gambar berukuran megabyte.*
+
+- **AC 6.1**: Mengompresi [`public/images/portrait-full.jpg`](file:///Users/adamhdyt/Work/WebProject/damz-projects/public/images/portrait-full.jpg) (yang saat ini berukuran **6.2 MB**) menjadi format WebP teroptimasi berukuran **< 200 KB** dengan dimensi tampilan proporsional (max 1600px width).
+- **AC 6.2**: Mengompresi seri 4 foto pendakian gunung di `public/images/` (`mountain-trail.png`, `mountain-camp.png`, `mountain-ridge.png`, `mountain-summit.png`) yang totalnya mencapai **8.4 MB** menjadi format WebP berukuran rata-rata **150–200 KB per gambar** (total < 800 KB).
+- **AC 6.3**: Menambahkan atribut `priority` pada gambar potret di atas viewport (`Hero` dan `About`), serta `loading="lazy"` pada gambar di bawah viewport untuk memaksimalkan First Contentful Paint.
 
 ---
 
 ### 2.3 Non-Goals (Out of Scope)
-- **Bukan CMS Backend Baru**: Tidak membangun sistem database CMS custom baru dari nol; tetap menggunakan Markdown/MDX parser lokal (`content/tech/*.mdx` & `content/life/*.mdx`) yang terbukti cepat dan stabil.
-- **Bukan Web Builder Proprietary**: Tidak menggunakan builder tertutup Webild/Wix; diimplementasikan 100% menggunakan native Next.js 16 (App Router), Tailwind CSS v4, dan Framer Motion.
-- **Bukan Penulisan Artikel Baru**: Fokus pada restrukturisasi UI/UX dan presentasi konten; artikel blog menggunakan konten yang sudah ada.
+- **Bukan Membangun CMS GUI**: Pengelolaan artikel blog tetap menggunakan format MDX lokal statis yang aman, cepat, dan terversi dengan Git tanpa memerlukan database eksternal.
+- **Bukan Sistem E-Commerce / Donasi**: Tidak mengintegrasikan gateway pembayaran, afiliasi produk, atau donasi koin/kopi. Fokus 100% pada reputasi profesional enterprise DBA.
+- **Bukan Multi-Bahasa Dinamis (i18n Switcher)**: Mengingat target audiens utama adalah rekruter korporat, perbankan, dan komunitas teknologi global, seluruh website distandardisasi menjadi **Bahasa Inggris profesional**.
 
 ---
 
-## 3. Design System & Visual Specification
+## 3. Technical Specifications
 
-### 3.1 Layout & Breakpoints
-- **Container Max-Width**: `1280px` (desktop), padding horizontal adaptif `16px` (mobile), `32px` (tablet), `48px` (desktop).
-- **Grid Layout**:
-  - Hero Cards: Stacked di mobile, Scroll-linked transforms di desktop (≥ 1024px).
-  - Selected Work: 1 kolom di mobile, 2 kolom di tablet, 3 kolom di desktop.
-  - About / Quote: Stacked vertikal di mobile, 2 kolom seimbang di desktop.
-  - Certifications: 1 kolom di mobile, 2 kolom di tablet, 3 kolom di desktop.
+### 3.1 Architecture & Data Flow
 
-### 3.2 Visual Atmosphere & Color Palette
-- **Background**: Sleek modern dark mode (deep zinc `#09090b` / surface `#18181b` / border `#27272a`).
-- **Typography**: Clean sans-serif editorial typography (Inter / Geist) dengan hierarki tegas:
-  - Hero H1: `text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight`
-  - Section Headings: `text-3xl sm:text-5xl font-bold tracking-tight`
-  - Body: `text-muted-foreground text-base sm:text-lg leading-relaxed`
-- **Pill Badges**: Rounded full borders dengan background semi-transparan (`bg-secondary/50 backdrop-blur-sm border-border`).
+```mermaid
+flowchart TD
+    subgraph Client Layer
+        A["Visitor UI (Next.js 15 App Router)"]
+        B["FloatingPillNav (Constants Sync)"]
+        C["HeroScrollShowcase (Polaroid Cards)"]
+        D["Contact Form (LetsBuildSection)"]
+    end
 
----
+    subgraph Server Layer (Next.js Server Actions)
+        E["sendContactMessage() in app/actions/contact.ts"]
+        F["Zod Validation Schema (Name, Email, Message, Honeypot)"]
+        G["MDX Engine (next-mdx-remote/rsc + Shiki)"]
+    end
 
-## 4. Technical Specifications
+    subgraph External Services
+        H["Resend API (support@resend.com -> adamhdyt11@gmail.com)"]
+        I["Giscus (GitHub Discussions Comments)"]
+    end
 
-### 4.1 Technology Stack
-- **Framework**: Next.js 16 (App Router) + React 19
-- **Animation**: Framer Motion 12 (`useScroll`, `useTransform`, `motion.*`, `AnimatePresence`)
-- **Styling**: Tailwind CSS v4 + Vanilla CSS utilities
-- **Content Engine**: `next-mdx-remote` + `gray-matter` + Shiki syntax highlighting
-- **Icons**: Lucide React
-- **Validation**: Zod 4
-
-### 4.2 Component Architecture Hierarchy
-```
-app/
-├── (blog)/
-│   ├── layout.tsx                # Base layout with Floating Pill Nav & Footer
-│   ├── page.tsx                  # Home: Hero -> Scroll Transition -> Selected Work -> About -> Certs -> Blog -> Contact
-│   ├── about/page.tsx            # Dedicated About Me page
-│   ├── tech/page.tsx             # Tech Notes listing with search & tag filter
-│   ├── tech/[slug]/page.tsx      # Tech Notes post detail
-│   ├── life/page.tsx             # Life listing with search & tag filter
-│   ├── life/[slug]/page.tsx      # Life post detail
-│   ├── contact/page.tsx          # Contact page
-│   └── privacy-policy/page.tsx   # Privacy policy
-components/
-├── navigation/
-│   ├── floating-pill-nav.tsx     # Signature floating pill header + expandable modal
-│   └── footer.tsx                # Clean editorial footer
-├── home/
-│   ├── hero-section.tsx          # Hero copy, badges, stat counters, CTA buttons
-│   ├── scroll-showcase.tsx       # Signature scroll-linked stacked-cards to 3-col grid
-│   ├── about-quote-section.tsx   # Editorial quote card + portrait photo with social pills
-│   ├── certifications-grid.tsx   # Oracle certs grid + lightbox preview modal
-│   ├── content-pillars.tsx       # Tech Notes & Life preview cards
-│   └── quick-contact.tsx         # Direct contact CTA & email action
-└── shared/
-    ├── lightbox-modal.tsx        # High-res certificate viewer
-    └── stat-counter.tsx          # Animated number counter
+    A --> B & C & D
+    D -->|Submit Form Data| E
+    E --> F
+    F -->|Valid Payload| H
+    A --> G
+    A --> I
 ```
 
-### 4.3 Scroll-Linked Animation Logic
+### 3.2 Server Action Specification: `sendContactMessage`
+- **File**: `app/actions/contact.ts`
+- **Input Parameters**:
+  ```ts
+  interface ContactFormData {
+    name: string
+    email: string
+    message: string
+    botField?: string // Honeypot spam trap
+  }
+  ```
+- **Validation Logic**:
+  ```ts
+  const contactSchema = z.object({
+    name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
+    email: z.string().trim().email("Please enter a valid email address"),
+    message: z.string().trim().min(10, "Message must be at least 10 characters").max(2000),
+    botField: z.string().max(0).optional(), // Must be empty
+  })
+  ```
+- **Execution Flow**:
+  1. Validasi `botField`. Jika terisi, kembalikan simulasi sukses tanpa memproses (silent spam rejection).
+  2. Panggil `resend.emails.send`:
+     - `from`: `Adam Hidayat Portfolio <onboarding@resend.dev>` (atau verified custom domain)
+     - `to`: `adamhdyt11@gmail.com`
+     - `reply_to`: Email pengirim
+     - `subject`: `[Portfolio Contact] New message from ${name}`
+     - `text` / `html`: Format email bersih berisi nama, email, waktu submit, dan isi pesan.
+  3. Kembalikan `{ success: true }` atau `{ error: string }`.
+
+### 3.3 Centralized Constants: `lib/constants.ts`
+Untuk mencegah duplikasi URL dan typo pada link:
 ```ts
-// Blueprint: components/home/scroll-showcase.tsx
-const containerRef = useRef<HTMLDivElement>(null)
-const { scrollYProgress } = useScroll({
-  target: containerRef,
-  offset: ["start start", "end end"]
-})
+export const SITE_CONFIG = {
+  name: "Adam Hidayat",
+  title: "Database Administrator",
+  email: "adamhdyt11@gmail.com",
+  location: "Jakarta, Indonesia (GMT+7)",
+  socials: {
+    github: "https://github.com/adamhdyt",
+    linkedin: "https://www.linkedin.com/in/adam-hidayat/",
+    instagram: "https://www.instagram.com/adamhdyt/",
+  },
+  cvUrl: "/CV/Adam_Hidayat_DBA_CV.pdf",
+} as const
+```
 
-// Card 1: Left card (starts tilted left, animates to column 1, rotation 0)
-const card1X = useTransform(scrollYProgress, [0, 0.6], ["20%", "0%"])
-const card1Y = useTransform(scrollYProgress, [0, 0.6], ["10%", "0%"])
-const card1Rotate = useTransform(scrollYProgress, [0, 0.6], [-8, 0])
+### 3.4 Codebase Cleanup Matrix
+File-file berikut **wajib dihapus** dari codebase untuk menjaga kebersihan repositori:
 
-// Card 2: Center card (starts center front, animates to column 2)
-const card2Scale = useTransform(scrollYProgress, [0, 0.6], [1.05, 1])
-const card2Rotate = useTransform(scrollYProgress, [0, 0.6], [2, 0])
+| File Path | Status | Alasan Penghapusan |
+|---|---|---|
+| `components/home/hero-section.tsx` | Delete | Orphan/Dead code (digantikan oleh `hero-scroll-showcase.tsx`) |
+| `components/home/selected-work-section.tsx` | Delete | Orphan/Dead code (digabungkan ke dalam `hero-scroll-showcase.tsx`) |
+| `components/blog/sidebar.tsx` | Delete | Orphan/Dead code dari template dashboard lama |
+| `components/blog/mobile-nav.tsx` | Delete | Orphan/Dead code (digantikan oleh modal Floating Pill) |
+| `components/blog/newsletter-form.tsx` | Delete | Orphan/Dead code |
+| `components/blog/theme-toggle.tsx` | Delete | Orphan/Dead code (sudah terintegrasi di Floating Pill) |
+| `components/blog/affiliate-disclosure.tsx` | Delete | Template placeholder afiliasi belanja yang tidak relevan |
+| `components/blog/ad-banner.tsx` | Delete | Placeholder dummy AdSense |
+| `public/placeholder-*.png/svg/jpg` | Delete | File dummy sisa template |
+| 6 MDX stubs di `content/tech/` & `content/life/` | Delete | Artikel kosong berisi `# Content goes here` |
 
-// Card 3: Right card (starts tilted right, animates to column 3)
-const card3X = useTransform(scrollYProgress, [0, 0.6], ["-20%", "0%"])
-const card3Rotate = useTransform(scrollYProgress, [0, 0.6], [10, 0])
+---
 
-// Heading opacity/scale
-const headingOpacity = useTransform(scrollYProgress, [0.3, 0.7], [0, 1])
-const headingY = useTransform(scrollYProgress, [0.3, 0.7], [40, 0])
+## 4. Risks, Mitigation & Phased Roadmap
+
+### 4.1 Risk Analysis & Mitigation Strategies
+
+| Risiko Potensial | Tingkat | Dampak | Strategi Mitigasi |
+|---|:---:|:---:|---|
+| **Resend API Key Tidak Terisi di Local Dev** | Sedang | Form gagal kirim saat testing lokal | Tambahkan fallback simulasi yang mencetak pesan ke `console.log` di mode development ketika `RESEND_API_KEY` belum disetel di `.env.local`. |
+| **Ketiadaan Aset Foto untuk 3 Studi Kasus Baru** | Rendah | Kartu studi kasus kekurangan visual representatif | Gunakan diagram arsitektur database SVG / visual beresolusi tinggi yang relevan (arsitektur Oracle 19c RAC, grafik latensi AWR) yang profesional dan rapi. |
+| **Penyusutan Gambar Merusak Ketajaman di Retina Display** | Rendah | Gambar potret terlihat buram di layar 4K | Kompresi menggunakan format WebP dengan lebar 1600px dan `quality: 85` (cukup tajam untuk monitor 4K dengan ukuran file < 250 KB). |
+| **Regresi Tampilan Saat Scroll Header Disesuaikan** | Sedang | Breadcrumb artikel terpotong di layar ponsel | Uji coba di viewport mobile 375px dan desktop 1440px menggunakan subagent visual inspection. |
+
+---
+
+### 4.2 Phased Implementation Roadmap
+
+```mermaid
+gantt
+    title Roadmap Pelaksanaan Pembersihan & Peningkatan
+    dateFormat  YYYY-MM-DD
+    section Fase 1: Perbaikan Kritis
+    Fix Form Kontak Let's Build (Resend Action) :done, f1_1, 2026-09-10, 1d
+    Fix Typo Link Sosmed di Floating Pill Nav    :done, f1_2, 2026-09-10, 1d
+    Fix Tabrakan Sticky Header Artikel           :active, f1_3, 2026-09-11, 1d
+    section Fase 2: Pembersihan AI Slop
+    Hapus AdSense dummy, Giscus notice & v0 tag  :f2_1, 2026-09-11, 1d
+    Hapus 7 File Dead Code & Placeholder Assets   :f2_2, 2026-09-11, 1d
+    Hapus 6 Artikel MDX Kosong                    :f2_3, 2026-09-12, 1d
+    section Fase 3: Konten Studi Kasus Otentik
+    Buat Studi Kasus 1: Oracle 19c Upgrade        :f3_1, 2026-09-12, 1d
+    Buat Studi Kasus 2: Query Tuning Latency >99% :f3_2, 2026-09-13, 1d
+    Buat Studi Kasus 3: IBK Seoul Headquarters    :f3_3, 2026-09-13, 1d
+    Update Link Case Study di Selected Work       :f3_4, 2026-09-13, 1d
+    section Fase 4: Optimasi & Polish
+    Kompresi portrait-full.jpg & foto gunung      :f4_1, 2026-09-14, 1d
+    Standardisasi Bahasa Inggris di Hero Section :f4_2, 2026-09-14, 1d
+    Peningkatan Kontras Light Mode               :f4_3, 2026-09-14, 1d
+    Verifikasi Lighthouse & Browser Subagent     :f4_4, 2026-09-15, 1d
 ```
 
 ---
 
-## 5. Risks & Mitigation
-
-| Risiko | Dampak | Mitigasi |
-|---|---|---|
-| Scroll jank pada perangkat mobile saat animasi berjalan | Sedang / Tinggi | Gunakan CSS transform (`will-change: transform`), matikan sticky pin pada mobile `< 768px` dan gunakan layout vertikal natural. |
-| Ukuran aset gambar sertifikat memperlambat LCP | Sedang | Optimasi format WebP/AVIF, lazy loading pada gambar non-hero, Next.js Image component dengan placeholder blur. |
-| Broken links pada konten blog MDX existing | Tinggi | Pertahankan struktur direktori `content/tech/` dan `content/life/` serta route Next.js tanpa perubahan slug. |
-| Aksesibilitas bagi pengguna sensitif motion | Rendah | Mengimplementasikan hook `useReducedMotion()` dari Framer Motion. |
+## 5. Sign-off & Verification Criteria
+Pekerjaan pembersihan dan penyempurnaan ini dianggap selesai jika:
+1. Menjalankan `npm run build` sukses tanpa warning *unused imports* atau broken dynamic routes.
+2. Pengujian formulir kontak berhasil mengirimkan email uji coba ke `adamhdyt11@gmail.com` dengan data nama dan pesan yang utuh.
+3. Seluruh kartu di halaman depan dapat diklik dan mengarah ke konten nyata (tidak ada artikel `# Content goes here`).
+4. Halaman blog dibuka di mobile width (375px) dan desktop (1440px) tanpa layout collision dan tanpa banner iklan dummy.
+5. Skor audit Lighthouse Performance mencapai ≥ 95.

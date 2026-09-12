@@ -3,7 +3,6 @@ import { ArrowLeft } from "lucide-react"
 import type { Post } from "@/lib/mdx"
 import { ReadingProgress } from "@/components/blog/reading-progress"
 import { TableOfContents } from "@/components/blog/table-of-contents"
-import { AdBanner } from "@/components/blog/ad-banner"
 import { getAllPosts } from "@/lib/mdx"
 import { RelatedPosts } from "@/components/blog/related-posts"
 import { ShareButtons } from "@/components/blog/share-buttons"
@@ -23,7 +22,7 @@ export function PostDetail({
   return (
     <main className="flex h-full flex-col">
       <ReadingProgress />
-      <header className="sticky top-0 z-10 flex items-center gap-3 border-b border-border bg-background/80 px-6 py-4 backdrop-blur-md sm:px-8">
+      <div className="flex items-center gap-3 border-b border-border/80 bg-background px-6 py-4 sm:px-8">
         <Link
           href={backHref}
           className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary"
@@ -34,7 +33,7 @@ export function PostDetail({
         <span className="truncate text-sm text-muted-foreground">
           {post.category === "tech" ? "Tech Notes" : "Life"} / {post.tag}
         </span>
-      </header>
+      </div>
 
       <div className="px-6 py-8 sm:px-8">
         <div className="mx-auto max-w-6xl xl:grid xl:grid-cols-[1fr_250px] xl:gap-16">
@@ -57,7 +56,6 @@ export function PostDetail({
                 {children}
                 <ShareButtons title={post.title} />
                 <hr className="my-10 border-border" />
-                <AdBanner dataAdSlot="bottom-article-slot" className="mt-8" />
                 <RelatedPosts currentPost={post} allPosts={allPosts} />
                 <Comments />
               </div>

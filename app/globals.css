@@ -159,8 +159,20 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
+  }
+  /* Radial vignette background — matches Webild reference site light/warm gray */
+  body:not(.dark) {
+    background-image: radial-gradient(
+      ellipse 120% 80% at 50% 0%,
+      transparent 30%,
+      rgba(0, 0, 0, 0.028) 100%
+    );
+    background-attachment: fixed;
   }
 
   /* Shiki dual-theme support */
