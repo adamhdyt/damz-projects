@@ -14,6 +14,7 @@ import {
   Sparkles,
 } from "lucide-react"
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from "@/components/ui/icons"
+import { Reveal } from "@/components/ui/reveal"
 
 export const metadata: Metadata = {
   title: "About Adam Hidayat — Database Administrator",
@@ -65,7 +66,7 @@ export default function AboutPage() {
             <Sparkles className="size-3.5 text-primary" />
             Biography & Engineering Journey
           </span>
-          <h1 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
+          <h1 className="editorial-title mt-4 text-foreground">
             Hi, I&apos;m Adam Hidayat. I keep enterprise data online, fast, and secure.
           </h1>
           <p className="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
@@ -107,45 +108,42 @@ export default function AboutPage() {
       </div>
 
       {/* Experience Timeline */}
-      <section className="mb-20 border-t border-border/60 pt-16">
-        <div className="max-w-2xl mb-10">
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+      <section id="experience" aria-labelledby="experience-heading" className="mb-20 grid items-start gap-10 border-t border-border pt-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <div className="lg:sticky lg:top-32">
+          <span className="section-label">
             Experience & Impact
-          </h2>
-          <h3 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+          </span>
+          <h2 id="experience-heading" className="mt-4 font-heading text-[clamp(2rem,3.5vw,3.5rem)] font-medium leading-[1.08] tracking-tight">
             Where I&apos;ve Been Engineering
-          </h3>
+          </h2>
+          <Link href="/#projects" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm underline decoration-foreground/30 underline-offset-4">Read the project case studies <ArrowRight className="size-4" /></Link>
         </div>
 
-        <div className="space-y-8">
+        <div className="border-l border-border pl-6 sm:pl-8">
           {experience.map((item) => (
-            <div
+            <Reveal
               key={item.company}
-              className="rounded-3xl border border-border/80 bg-card/70 backdrop-blur-sm p-8 shadow-sm"
+              className="relative pb-6"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6 border-b border-border/60">
-                <div>
-                  <h4 className="text-xl font-bold text-foreground">{item.role}</h4>
-                  <div className="text-sm font-medium text-primary mt-0.5">{item.company}</div>
-                </div>
-                <span className="text-xs font-mono text-muted-foreground bg-muted px-3 py-1 rounded-full self-start sm:self-auto">
-                  {item.period}
-                </span>
-              </div>
+              <span aria-hidden="true" className="absolute -left-[29px] top-1 size-2 rounded-full bg-status ring-4 ring-background sm:-left-[37px]" />
+              <p className="text-xs text-muted-foreground">{item.period}</p>
+              <h3 className="mt-3 text-2xl font-semibold tracking-tight">{item.role}</h3>
+              <p className="mt-2 text-base">{item.company}</p>
 
               <p className="mt-6 text-sm sm:text-base text-muted-foreground leading-relaxed">
                 {item.description}
               </p>
 
-              <div className="mt-6 space-y-2.5">
-                {item.highlights.map((h, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground/90">
-                    <CheckCircle2 className="size-4 text-emerald-500 shrink-0 mt-0.5" />
-                    <span>{h}</span>
-                  </div>
-                ))}
+              <details className="experience-details mt-6 border-y border-border">
+                <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-5 py-3 text-sm font-medium">Responsibilities & impact <span aria-hidden="true" className="text-xl">+</span></summary>
+                <ul className="list-disc space-y-3 pb-5 pl-5 text-sm leading-relaxed text-muted-foreground">
+                  {item.highlights.map(h => <li key={h}>{h}</li>)}
+                </ul>
+              </details>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {competencies[0].skills.map(skill => <span key={skill} className="rounded-lg border border-border bg-card px-3 py-2 text-xs text-muted-foreground">{skill}</span>)}
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -216,7 +214,7 @@ export default function AboutPage() {
           <div className="lg:col-span-5">
             <div className="relative aspect-[16/11] rounded-3xl overflow-hidden border border-border/80 bg-card shadow-md">
               <Image
-                src="/images/mountain-summit.png"
+                src="/images/mountain-summit.webp"
                 alt="Mountain Summit — Trail Photography by Adam Hidayat"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"

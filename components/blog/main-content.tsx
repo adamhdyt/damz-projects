@@ -22,19 +22,19 @@ export function MainContent({
   const meta = sectionMeta[section]
 
   return (
-    <main className="flex h-full flex-col">
+    <div className="mx-auto flex h-full max-w-6xl flex-col pb-12">
       {/* Top bar (Title and Description only) */}
-      <div className="flex items-center justify-between gap-4 border-b border-border/80 bg-background px-6 py-6 sm:px-8">
+      <div className="flex items-center justify-between gap-4 border-b border-border bg-background px-6 pt-16 pb-10 sm:px-8">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+          <h1 className="editorial-title text-foreground">
             {meta.title}
           </h1>
-          <p className="mt-1 text-sm text-muted-foreground">{meta.description}</p>
+          <p className="mt-4 max-w-xl text-base text-muted-foreground">{meta.description}</p>
         </div>
       </div>
 
       {/* Interactive Search and Post Grid */}
       <PostListWithSearch section={section} posts={posts} />
-    </main>
+    </div>
   )
 }

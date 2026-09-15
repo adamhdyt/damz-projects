@@ -31,10 +31,10 @@ export function Footer() {
 
   return (
     <footer className="w-full px-6 sm:px-10 lg:px-16 py-12 mt-auto">
-      <div className="max-w-6xl mx-auto rounded-[36px] sm:rounded-[44px] border border-border/80 bg-card/80 backdrop-blur-sm p-8 sm:p-14 lg:p-16 shadow-sm">
+      <div className="editorial-footer max-w-6xl mx-auto border border-border p-8 sm:p-14 lg:p-16">
         {/* Giant Surname Typography (Webild Creative Portfolio Signature Footer) */}
         <div className="overflow-hidden">
-          <h2 className="text-[13vw] sm:text-[110px] md:text-[140px] font-bold tracking-tighter text-foreground text-center leading-none select-none py-2">
+          <h2 className="text-[clamp(4rem,16vw,12rem)] font-medium tracking-[-0.06em] text-foreground text-center leading-none select-none py-2">
             Hidayat
           </h2>
         </div>
@@ -53,7 +53,7 @@ export function Footer() {
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="flex size-9 items-center justify-center rounded-full bg-foreground text-background shadow-sm hover:scale-110 active:scale-95 transition-transform"
+                className="flex size-11 items-center justify-center rounded-full bg-foreground text-background hover:scale-105 active:scale-95 transition-transform"
                 aria-label={name}
                 title={name}
               >

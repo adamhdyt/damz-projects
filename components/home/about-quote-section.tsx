@@ -1,129 +1,56 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, MapPin, Mail, Sparkles } from "lucide-react"
+import { ArrowRight, MapPin, Mail } from "lucide-react"
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from "@/components/ui/icons"
+import { Reveal } from "@/components/ui/reveal"
+import { SITE_CONFIG } from "@/lib/constants"
 
 const socialLinks = [
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/adam-hidayat/",
-    icon: LinkedInIcon,
-    label: "LinkedIn",
-  },
-  {
-    name: "GitHub",
-    href: "https://github.com/adamhdyt",
-    icon: GitHubIcon,
-    label: "GitHub",
-  },
-  {
-    name: "Instagram",
-    href: "https://www.instagram.com/adamhdyt/",
-    icon: InstagramIcon,
-    label: "Instagram",
-  },
-  {
-    name: "Email",
-    href: "mailto:adamhdyt11@gmail.com",
-    icon: Mail,
-    label: "Email",
-  },
+  { name: "LinkedIn", href: SITE_CONFIG.socials.linkedin, icon: LinkedInIcon },
+  { name: "GitHub", href: SITE_CONFIG.socials.github, icon: GitHubIcon },
+  { name: "Instagram", href: SITE_CONFIG.socials.instagram, icon: InstagramIcon },
+  { name: "Email", href: SITE_CONFIG.socials.email, icon: Mail },
 ]
+const toolkit = ["Oracle Database 19c", "Oracle RAC", "PostgreSQL", "SQL Server", "MySQL", "Data Guard", "RMAN", "PL/SQL", "Linux Shell Scripting"]
 
 export function AboutQuoteSection() {
   return (
-    <section className="relative px-6 py-20 sm:px-10 lg:px-16 max-w-7xl mx-auto border-t border-border/60">
-      {/* Editorial Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+    <section id="about" aria-labelledby="about-heading" className="mx-auto w-full max-w-7xl border-t border-border px-6 py-20 sm:px-10 lg:px-16">
+      <Reveal className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
-            <Sparkles className="size-3 text-primary" />
-            Engineering Philosophy & Persona
-          </span>
-          <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
-            Behind the Systems & Databases
-          </h2>
+          <span className="section-label">Engineering Philosophy & Persona</span>
+          <h2 id="about-heading" className="mt-3">Behind the Systems & Databases</h2>
         </div>
-        <Link
-          href="/about"
-          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group"
-        >
-          Read full bio & journey
-          <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-        </Link>
+        <Link href="/about" className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm underline decoration-border underline-offset-4 hover:decoration-current">Read full bio & journey <ArrowRight className="size-4" /></Link>
+      </Reveal>
+      <div className="grid gap-5 lg:grid-cols-2">
+        <Reveal className="flex flex-col justify-between rounded-2xl border border-border bg-card p-7 sm:p-10 lg:p-12">
+          <blockquote className="font-heading text-[clamp(1.65rem,2.6vw,2.5rem)] font-medium leading-[1.22] tracking-[-0.035em]">
+            &ldquo;In enterprise banking, 99.99% database uptime isn&apos;t an afterthought—it is the foundation. I engineer resilient Oracle infrastructures, zero-downtime migrations, and performance optimizations that scale under mission-critical workloads.&rdquo;
+          </blockquote>
+          <div className="mt-10">
+            <p className="font-medium">{SITE_CONFIG.name}</p>
+            <p className="mt-1 text-sm text-muted-foreground">Database Administrator · Bank IBK Indonesia</p>
+            <Link href="/about" className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm underline underline-offset-4">Discover my background <ArrowRight className="size-3.5" /></Link>
+          </div>
+        </Reveal>
+        <Reveal delay={0.12} className="relative min-h-[420px] overflow-hidden rounded-2xl bg-card sm:min-h-[520px]">
+          <Image src="/images/portrait-full.jpg" alt="Adam Hidayat, Database Administrator" fill sizes="(max-width: 1023px) 90vw, 45vw" className="object-cover object-[center_20%]" />
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent px-6 pb-6 pt-24 text-white sm:px-8">
+            <p className="mb-3 flex items-center gap-2 text-sm"><MapPin className="size-4" /> Jakarta, Indonesia</p>
+            <div className="flex flex-wrap gap-2">
+              {socialLinks.map(({ name, href, icon: Icon }) => (
+                <a key={name} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noopener noreferrer' : undefined} aria-label={name} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/30 bg-black/70 px-3.5 text-xs transition-colors hover:bg-white hover:text-black"><Icon className="size-3.5" />{name}</a>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
-
-      {/* Split Cards Container */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-        {/* Left Column: Editorial Quote Card */}
-        <div className="lg:col-span-7 flex flex-col justify-between rounded-3xl border border-border/80 bg-card/80 backdrop-blur-sm p-8 sm:p-10 lg:p-12 shadow-sm hover:shadow-md hover:border-border transition-all duration-300">
-          <div>
-            {/* Quote Mark Badge */}
-            <div className="size-12 rounded-2xl bg-foreground text-background flex items-center justify-center font-serif text-3xl font-bold select-none shadow-sm mb-8">
-              &rdquo;
-            </div>
-
-            {/* Editorial Quote */}
-            <blockquote className="text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-foreground leading-snug sm:leading-relaxed">
-              &ldquo;In enterprise banking, 99.99% database uptime isn&apos;t an afterthought—it is the foundation. I engineer resilient Oracle infrastructures, zero-downtime migrations, and performance optimizations that scale under mission-critical workloads.&rdquo;
-            </blockquote>
-          </div>
-
-          <div className="mt-10 pt-6 border-t border-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <div className="text-base font-semibold text-foreground">Adam Hidayat</div>
-              <div className="text-xs sm:text-sm text-muted-foreground">
-                Database Administrator · Bank IBK Indonesia
-              </div>
-            </div>
-
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-xs font-medium text-foreground shadow-sm hover:bg-foreground hover:text-background transition-all duration-200"
-            >
-              Discover my background
-              <ArrowRight className="size-3" />
-            </Link>
-          </div>
-        </div>
-
-        {/* Right Column: Portrait Card with Floating Pills */}
-        <div className="lg:col-span-5 flex flex-col justify-between rounded-3xl border border-border/80 bg-card/80 backdrop-blur-sm p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-border transition-all duration-300 group">
-          {/* Portrait Image with Location Badge */}
-          <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-muted shadow-inner">
-            <Image
-              src="/images/portrait-full.jpg"
-              alt="Adam Hidayat — Database Administrator"
-              fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover object-[center_20%] transition-transform duration-700 ease-out group-hover:scale-105"
-              priority={false}
-            />
-
-            {/* Location Pill Overlay */}
-            <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-background/80 backdrop-blur-md px-3 py-1 text-xs font-medium text-foreground border border-border/60 shadow-sm">
-              <MapPin className="size-3 text-primary" />
-              <span>Jakarta, Indonesia</span>
-            </div>
-          </div>
-
-          {/* Floating Social Pills */}
-          <div className="mt-5 pt-1 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
-            {socialLinks.map(({ name, href, icon: Icon, label }) => (
-              <a
-                key={name}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-background/90 backdrop-blur-sm px-3.5 py-1.5 text-xs font-medium text-foreground shadow-sm hover:border-foreground hover:bg-foreground hover:text-background transition-all duration-200"
-                aria-label={label}
-              >
-                <Icon className="size-3.5" />
-                <span>{name}</span>
-              </a>
-            ))}
-          </div>
-        </div>
+      <div className="mt-7 flex flex-col gap-5 border-t border-border pt-6 lg:flex-row lg:items-start">
+        <span className="shrink-0 py-2 text-sm text-muted-foreground">My technical toolkit</span>
+        <ul className="flex flex-wrap gap-2" aria-label="Technical toolkit">
+          {toolkit.map(skill => <li key={skill} className="rounded-lg border border-border bg-card px-3 py-2 text-xs text-muted-foreground">{skill}</li>)}
+        </ul>
       </div>
     </section>
   )

@@ -53,7 +53,7 @@ export default function ContactPage() {
           <Sparkles className="size-3.5 text-primary" />
           Get In Touch
         </span>
-        <h1 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+        <h1 className="editorial-title mt-4 text-foreground">
           Let&apos;s Connect & Collaborate
         </h1>
         <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
