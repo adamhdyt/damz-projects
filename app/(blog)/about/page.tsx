@@ -212,10 +212,10 @@ export default function AboutPage() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="relative aspect-[16/11] rounded-3xl overflow-hidden border border-border/80 bg-card shadow-md">
+            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-border/80 bg-card shadow-md">
               <Image
-                src="/images/mountain-summit.webp"
-                alt="Mountain Summit — Trail Photography by Adam Hidayat"
+                src="/images/sumbing/sumbing-crater-rim-view.webp"
+                alt="Adam looking across the volcanic caldera of Mount Sumbing during his second hike"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"
