@@ -1,7 +1,8 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Sparkles, ArrowRight, ShieldCheck, Database, Zap, Cloud } from "lucide-react"
+import { ShieldCheck, Database, Zap, Cloud } from "lucide-react"
+import { Reveal } from "@/components/ui/reveal"
 
 const services = [
   {
@@ -38,9 +39,8 @@ export function ServicesSection() {
   return (
     <section className="relative px-6 py-20 sm:px-10 lg:px-16 max-w-6xl mx-auto border-t border-border/60">
       {/* Header (Webild Style) */}
-      <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-        <div className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-secondary/60 px-3.5 py-1 text-xs font-medium text-muted-foreground">
-          <Sparkles className="size-3 text-primary" />
+      <Reveal className="max-w-2xl mb-14 space-y-4">
+        <div className="section-label">
           <span>Services</span>
         </div>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
@@ -67,14 +67,15 @@ export function ServicesSection() {
             <span>Book a consultation</span>
           </Link>
         </div>
-      </div>
+      </Reveal>
 
       {/* 2x2 Services Grid (Webild Style) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {services.map((service) => (
-          <div
+        {services.map((service, index) => (
+          <Reveal
+            delay={(index % 2) * 0.1}
             key={service.title}
-            className="group flex flex-col rounded-[32px] border border-border/80 bg-card/70 backdrop-blur-sm p-4 sm:p-5 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all duration-300"
+            className="group flex flex-col rounded-2xl border border-border bg-card p-3 sm:p-4"
           >
             {/* Visual Preview */}
             <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-zinc-900 border border-border/50">
@@ -87,7 +88,7 @@ export function ServicesSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
               <div className="absolute bottom-3 left-3">
-                <span className="rounded-full bg-black/75 backdrop-blur-md px-3 py-1 text-xs font-semibold text-white border border-white/20">
+                <span className="rounded-full bg-black/90 px-3 py-1 text-xs font-semibold text-white border border-white/20">
                   {service.tag}
                 </span>
               </div>
@@ -102,7 +103,7 @@ export function ServicesSection() {
                 {service.description}
               </p>
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

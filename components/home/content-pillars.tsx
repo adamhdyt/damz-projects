@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, BookOpen, Clock, Calendar, Database, Compass, ChevronRight } from "lucide-react"
 import { Post } from "@/lib/mdx"
+import { Reveal } from "@/components/ui/reveal"
 
 interface ContentPillarsProps {
   techPosts: Post[]
@@ -17,7 +18,7 @@ export function ContentPillars({ techPosts, lifePosts }: ContentPillarsProps) {
   return (
     <section className="relative px-6 py-20 sm:px-10 lg:px-16 max-w-7xl mx-auto border-t border-border/60">
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+      <Reveal className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
         <div className="max-w-2xl">
           <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
             <BookOpen className="size-3.5 text-primary" />
@@ -46,12 +47,12 @@ export function ContentPillars({ techPosts, lifePosts }: ContentPillarsProps) {
             Life & Off-Screen →
           </Link>
         </div>
-      </div>
+      </Reveal>
 
       {/* 2 Big Pillar Columns */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
         {/* PILLAR 1: TECH NOTES */}
-        <div className="flex flex-col justify-between rounded-3xl border border-border/80 bg-card/70 backdrop-blur-sm p-6 sm:p-8 shadow-sm hover:shadow-md hover:border-border transition-all duration-300">
+        <div className="flex min-w-0 flex-col justify-between rounded-2xl border border-border bg-card p-6 sm:p-8">
           <div>
             {/* Pillar Header */}
             <div className="flex items-start justify-between pb-6 border-b border-border/60">
@@ -139,16 +140,16 @@ export function ContentPillars({ techPosts, lifePosts }: ContentPillarsProps) {
         </div>
 
         {/* PILLAR 2: LIFE & REFLECTIONS */}
-        <div className="flex flex-col justify-between rounded-3xl border border-border/80 bg-card/70 backdrop-blur-sm p-6 sm:p-8 shadow-sm hover:shadow-md hover:border-border transition-all duration-300">
+        <div className="flex min-w-0 flex-col justify-between rounded-2xl border border-border bg-card p-6 sm:p-8">
           <div>
             {/* Pillar Header */}
             <div className="flex items-start justify-between pb-6 border-b border-border/60">
               <div className="flex items-center gap-3.5">
-                <span className="flex size-11 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-background text-foreground">
                   <Compass className="size-5" />
                 </span>
                 <div>
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                  <span className="text-[11px] font-medium text-muted-foreground">
                     Off-Duty & Reflections
                   </span>
                   <h3 className="text-xl font-bold text-foreground">Life & Mountains</h3>

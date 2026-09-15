@@ -50,7 +50,7 @@ export function LetsBuildSection() {
     <section id="contact" className="relative px-6 py-20 sm:px-10 lg:px-16 max-w-6xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         {/* Left Column: Form Card */}
-        <div className="lg:col-span-6 flex flex-col justify-between rounded-[36px] border border-border/80 bg-card/80 backdrop-blur-sm p-8 sm:p-12 shadow-sm">
+        <div className="lg:col-span-6 flex flex-col justify-between rounded-2xl border border-border bg-card p-6 sm:p-12">
           <div>
             <div className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-secondary/60 px-3.5 py-1 text-xs font-medium text-muted-foreground mb-4">
               <span>Get in Touch</span>
@@ -66,6 +66,8 @@ export function LetsBuildSection() {
             <form onSubmit={handleSubmit} className="mt-8 space-y-4">
               <div>
                 <input
+                  aria-label="Your name"
+                  autoComplete="name"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -78,6 +80,8 @@ export function LetsBuildSection() {
 
               <div>
                 <input
+                  aria-label="Your email"
+                  autoComplete="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -90,6 +94,7 @@ export function LetsBuildSection() {
 
               <div>
                 <textarea
+                  aria-label="Your message"
                   rows={4}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
@@ -145,7 +150,7 @@ export function LetsBuildSection() {
         </div>
 
         {/* Right Column: Photo Card with Action Pill */}
-        <div className="lg:col-span-6 relative rounded-[36px] overflow-hidden border border-border/80 bg-card shadow-sm min-h-[460px] flex flex-col justify-end p-8">
+        <div className="lg:col-span-6 relative rounded-2xl overflow-hidden border border-border bg-card min-h-[460px] flex flex-col justify-end p-5 sm:p-8">
           <Image
             src="/images/portrait-full.jpg"
             alt="Adam Hidayat"
@@ -159,7 +164,7 @@ export function LetsBuildSection() {
           <div className="relative z-10 flex items-center justify-between gap-4">
             <a
               href={`mailto:${SITE_CONFIG.email}`}
-              className="inline-flex items-center gap-2 rounded-full bg-black/80 backdrop-blur-md px-5 py-2.5 text-xs font-semibold text-white border border-white/20 hover:bg-black transition-colors"
+              className="inline-flex min-h-11 min-w-0 items-center gap-2 rounded-full bg-black/90 px-4 py-2.5 text-xs font-semibold text-white border border-white/20 hover:bg-black transition-colors"
             >
               <Mail className="size-3.5" />
               <span>{SITE_CONFIG.email}</span>

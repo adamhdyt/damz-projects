@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
@@ -26,6 +26,42 @@ export function FloatingPillNav() {
   const pathname = usePathname()
   const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const dialogRef = useRef<HTMLDivElement>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const headerRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (!isOpen) return
+    const dialog = dialogRef.current
+    const controls = () => Array.from(dialog?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? [])
+    controls()[0]?.focus()
+    const trapFocus = (event: KeyboardEvent) => {
+      if (event.key !== "Tab") return
+      const items = controls()
+      const first = items[0]
+      const last = items[items.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last?.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first?.focus()
+      }
+    }
+    const main = document.querySelector("main")
+    const footer = document.querySelector("footer")
+    headerRef.current?.setAttribute("inert", "")
+    main?.setAttribute("inert", "")
+    footer?.setAttribute("inert", "")
+    document.addEventListener("keydown", trapFocus)
+    return () => {
+      headerRef.current?.removeAttribute("inert")
+      main?.removeAttribute("inert")
+      footer?.removeAttribute("inert")
+      document.removeEventListener("keydown", trapFocus)
+      menuButtonRef.current?.focus()
+    }
+  }, [isOpen])
 
   useEffect(() => {
     setMounted(true)
@@ -58,14 +94,16 @@ export function FloatingPillNav() {
     <>
       {/* Floating Pill Bar (Top Center) */}
       <motion.header
+        ref={headerRef}
+        aria-hidden={isOpen || undefined}
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="fixed top-5 left-1/2 -translate-x-1/2 z-50 max-w-[92vw]"
       >
-        <div className="flex items-center gap-2 sm:gap-3 rounded-full border border-border/80 bg-background/85 px-3 py-1.5 shadow-lg shadow-black/5 backdrop-blur-md transition-all hover:border-border">
+        <div className="liquid-glass floating-nav flex items-center gap-1 sm:gap-3 rounded-full pl-3 pr-1.5 py-1.5">
           {/* Avatar Link */}
-          <Link href="/" className="flex items-center gap-2.5 group">
+          <Link href="/" className="flex min-h-11 items-center gap-2.5 group whitespace-nowrap">
             <div className="relative size-7 shrink-0 overflow-hidden rounded-full ring-1 ring-border/80">
               <Image
                 src="/images/portrait.png"
@@ -85,7 +123,7 @@ export function FloatingPillNav() {
 
           {/* Tagline / Indicator */}
           <div className="hidden items-center gap-1.5 text-[11px] font-medium text-muted-foreground sm:flex">
-            <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="status-dot" aria-hidden="true" />
             <span>DBA & Life</span>
           </div>
 
@@ -93,7 +131,7 @@ export function FloatingPillNav() {
           <button
             type="button"
             onClick={() => setTheme(isDark ? "light" : "dark")}
-            className="flex size-7 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer"
+            className="flex size-11 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer"
             aria-label="Toggle theme"
           >
             {mounted ? (
@@ -105,17 +143,20 @@ export function FloatingPillNav() {
 
           {/* Plus Toggle Button */}
           <button
+            ref={menuButtonRef}
             type="button"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
+            aria-controls="main-navigation"
             className={cn(
-              "flex size-7.5 items-center justify-center rounded-full transition-all cursor-pointer",
+              "flex h-11 items-center gap-2 px-3.5 justify-center rounded-full transition-all cursor-pointer",
               isOpen
                 ? "bg-foreground text-background rotate-45"
                 : "bg-foreground text-background hover:scale-105 active:scale-95"
             )}
           >
+            <span className="text-xs font-medium">Menu</span>
             <Plus className="size-4 transition-transform duration-300" />
           </button>
         </div>
@@ -132,12 +173,14 @@ export function FloatingPillNav() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm"
+              className="fixed inset-0 z-50 bg-black/25"
               aria-hidden="true"
             />
 
             {/* Modal Card */}
             <motion.div
+              ref={dialogRef}
+              id="main-navigation"
               role="dialog"
               aria-modal="true"
               aria-label="Main Navigation"
@@ -145,7 +188,7 @@ export function FloatingPillNav() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.94, y: -10 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[92vw] max-w-[380px] origin-top rounded-3xl border border-border bg-card/95 p-5 shadow-2xl backdrop-blur-xl"
+              className="liquid-glass fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[92vw] max-w-[420px] max-h-[calc(100dvh-40px)] overflow-y-auto origin-top rounded-2xl p-6"
             >
               {/* Card Header */}
               <div className="flex items-center justify-between pb-4 border-b border-border">
@@ -170,7 +213,7 @@ export function FloatingPillNav() {
                   type="button"
                   onClick={() => setIsOpen(false)}
                   aria-label="Close menu"
-                  className="flex size-8 items-center justify-center rounded-full bg-secondary text-foreground hover:bg-accent transition-colors cursor-pointer"
+                  className="flex size-11 items-center justify-center rounded-full bg-secondary text-foreground hover:bg-accent transition-colors cursor-pointer"
                 >
                   <X className="size-4" />
                 </button>
@@ -185,9 +228,10 @@ export function FloatingPillNav() {
                     <Link
                       key={item.label}
                       href={item.href}
+                      aria-current={isActive ? "page" : undefined}
                       onClick={() => setIsOpen(false)}
                       className={cn(
-                        "group flex items-center justify-between py-3 px-1 text-sm font-medium transition-colors hover:text-primary",
+                        "group flex min-h-11 items-center justify-between py-3 px-2 rounded-lg text-sm font-medium transition-colors hover:bg-background/60",
                         isActive ? "text-primary font-semibold" : "text-foreground/90"
                       )}
                     >

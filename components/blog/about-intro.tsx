@@ -12,7 +12,7 @@ export function AboutIntro() {
   const lifePosts = getAllPosts("life")
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="editorial-home flex h-full flex-col">
       {/* 01: Hero to Selected Work with Signature Un-tilting Scroll Animation */}
       <HeroScrollShowcase />
 

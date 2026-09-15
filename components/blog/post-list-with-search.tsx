@@ -73,10 +73,11 @@ export function PostListWithSearch({
           <input
             ref={inputRef}
             type="search"
+            aria-label="Search posts"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={`Search ${posts.length} posts... (Press '/' to focus)`}
-            className="w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
+            className="min-h-11 w-full rounded-md bg-transparent text-sm text-foreground placeholder:text-muted-foreground"
           />
         </div>
 
@@ -88,8 +89,9 @@ export function PostListWithSearch({
                 <button
                   key={tag}
                   onClick={() => toggleTag(tag)}
+                  aria-pressed={isActive}
                   className={cn(
-                    "rounded-full border px-3 py-1 text-[11px] font-medium transition-colors cursor-pointer",
+                    "min-h-11 rounded-full border px-3 py-1 text-xs font-medium transition-colors cursor-pointer",
                     isActive
                       ? "border-primary bg-primary/15 text-primary"
                       : "border-border text-muted-foreground hover:bg-accent hover:text-foreground"

@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { Plus, HelpCircle } from "lucide-react"
+import { Reveal } from "@/components/ui/reveal"
 
 const FAQ_CATEGORIES = ["General", "Enterprise DBA", "Performance", "Certifications"] as const
 type FAQCategory = (typeof FAQ_CATEGORIES)[number]
@@ -67,9 +68,9 @@ export function FAQSection() {
   return (
     <section id="faq" className="relative px-6 py-20 sm:px-10 lg:px-16 max-w-5xl mx-auto">
       {/* Container Card */}
-      <div className="rounded-[36px] border border-border/80 bg-card/80 backdrop-blur-sm p-8 sm:p-12 lg:p-16 shadow-sm">
+      <div className="rounded-2xl border border-border bg-card p-6 sm:p-12 lg:p-16">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
+        <Reveal className="text-center max-w-2xl mx-auto mb-10 space-y-3">
           <div className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-secondary/60 px-3.5 py-1 text-xs font-medium text-muted-foreground">
             <HelpCircle className="size-3 text-primary" />
             <span>FAQ</span>
@@ -89,7 +90,8 @@ export function FAQSection() {
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`rounded-full px-4 py-1.5 text-xs font-medium transition-all duration-200 ${
+                  aria-pressed={isActive}
+                  className={`min-h-11 rounded-full px-4 py-1.5 text-xs font-medium transition-all duration-200 ${
                     isActive
                       ? "bg-foreground text-background shadow-sm"
                       : "bg-muted/60 text-muted-foreground hover:text-foreground hover:bg-muted"
@@ -100,7 +102,7 @@ export function FAQSection() {
               )
             })}
           </div>
-        </div>
+        </Reveal>
 
         {/* Accordion List */}
         <div className="space-y-3.5 max-w-3xl mx-auto">

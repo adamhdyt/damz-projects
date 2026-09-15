@@ -41,7 +41,7 @@ export function PostDetail({
             <span className="inline-flex items-center rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary">
               {post.tag}
             </span>
-            <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground text-balance sm:text-4xl">
+            <h1 className="editorial-title mt-4 text-foreground">
               {post.title}
             </h1>
             <p className="mt-3 text-sm text-muted-foreground">
